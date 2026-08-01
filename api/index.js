@@ -324,7 +324,7 @@ app.post('/api/TitleData', async (req, res) => {
     const dailyTOTD = generateTOTD();
 
     res.json({
-        "MOTD": "",
+        "MOTD": "<color=#0000FF>WELCOME TO TEDDY TAGS!!</color>\n<color=#0000FF>CURRENTLY IN THE XMAS 2023 FLASHBACK UPDATE!</color>\n<color=#0000FF>THE ONLY OWNERS ARE ZXNA & TEDDY\nTHIS GAME IS APK METHOD</color>\n<color=#0000FF>discord.gg/vA33RvDQm6</color>",
         "TOTD": dailyTOTD
     });
 });
