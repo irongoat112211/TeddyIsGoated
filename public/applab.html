@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project RS — Gorilla Tag</title>
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+<style>
+:root {
+  --color-accent: oklch(60% 0.25 320);
+  --color-accent2: oklch(55% 0.22 250);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  min-height: 100vh; min-height: 100dvh;
+  display: grid; place-items: center;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #0a0a14;
+  color: #e0e0ff;
+  padding: 20px;
+  overflow: hidden;
+}
+
+canvas { position: fixed; inset: 0; z-index: 0; }
+
+.glass {
+  position: relative; z-index: 1;
+  width: 100%; max-width: 420px;
+  padding: 3rem 2.5rem;
+  background: rgba(255,255,255,0.025);
+  backdrop-filter: blur(32px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 24px;
+  box-shadow: 0 8px 64px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
+  text-align: center;
+  transition: transform 0.4s cubic-bezier(0, 0, 0.2, 1), box-shadow 0.4s ease;
+}
+.glass:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.badge {
+  display: inline-block; padding: 4px 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 999px;
+  font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1.5rem;
+}
+
+.brand {
+  font-size: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+  font-weight: 800; letter-spacing: -1px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.25rem;
+}
+
+.app-card {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  text-align: left;
+  margin-bottom: 1.5rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.app-card:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.12);
+}
+.app-icon {
+  width: 56px; height: 56px; border-radius: 12px;
+  object-fit: cover; flex-shrink: 0;
+  background: rgba(255,255,255,0.03);
+}
+.app-icon-fb {
+  width: 56px; height: 56px; border-radius: 12px; flex-shrink: 0;
+  background: linear-gradient(135deg, oklch(50% 0.15 320 / 0.2), oklch(50% 0.15 250 / 0.2));
+  display: grid; place-items: center; font-size: 24px;
+}
+.app-info { flex: 1; min-width: 0; }
+.app-title {
+  font-size: 1.05rem; font-weight: 700;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.app-desc {
+  font-size: 0.78rem; color: rgba(255,255,255,0.35);
+  line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; overflow: hidden;
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 15px 32px;
+  background: linear-gradient(135deg, oklch(55% 0.25 320 / 0.12), oklch(50% 0.22 250 / 0.12));
+  border: 1px solid oklch(55% 0.25 320 / 0.25);
+  border-radius: 14px;
+  color: #e0e0ff; font-size: 1rem; font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: oklch(55% 0.3 320 / 0.5);
+  box-shadow: 0 8px 32px oklch(55% 0.3 320 / 0.15);
+}
+.btn:active { transform: scale(0.97); }
+
+.loading {
+  padding: 2rem 0; color: rgba(255,255,255,0.25); font-size: 0.9rem;
+}
+
+.footer {
+  margin-top: 1.5rem;
+  color: rgba(255,255,255,0.12); font-size: 0.65rem; letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<main class="glass">
+  <div class="badge">Community Server</div>
+  <h1 class="brand">Project RS</h1>
+
+  <div id="content"><div class="loading">loading...</div></div>
+  <p class="footer">v1.1.139</p>
+</main>
+
+<script type="module">
+import * as THREE from 'three';
+
+// ─── 3D Background ─────────────────
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 100);
+camera.position.z = 8;
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+document.body.prepend(renderer.domElement);
+
+// Lights
+scene.add(new THREE.AmbientLight(0x8040ff, 0.3));
+const d = new THREE.DirectionalLight(0xff4080, 0.5);
+d.position.set(5, 5, 5);
+scene.add(d);
+const d2 = new THREE.DirectionalLight(0x4080ff, 0.4);
+d2.position.set(-5, -3, -2);
+scene.add(d2);
+
+// Floating particles
+const particlesGeom = new THREE.BufferGeometry();
+const count = 800;
+const pos = new Float32Array(count * 3);
+for (let i = 0; i < count * 3; i += 3) {
+  pos[i]     = (Math.random() - 0.5) * 20;
+  pos[i + 1] = (Math.random() - 0.5) * 20;
+  pos[i + 2] = (Math.random() - 0.5) * 10;
+}
+particlesGeom.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+const particlesMat = new THREE.PointsMaterial({
+  color: 0x8040ff, size: 0.015, transparent: true, opacity: 0.6,
+  blending: THREE.AdditiveBlending, depthWrite: false
+});
+const particles = new THREE.Points(particlesGeom, particlesMat);
+scene.add(particles);
+
+// Torus knot
+const knotGeom = new THREE.TorusKnotGeometry(1.4, 0.28, 200, 24);
+const knotMat = new THREE.MeshPhysicalMaterial({
+  color: 0x8040ff, roughness: 0.25, metalness: 0.1,
+  clearcoat: 0.2, clearcoatRoughness: 0.3,
+  emissive: 0x201040, emissiveIntensity: 0.3
+});
+const knot = new THREE.Mesh(knotGeom, knotMat);
+knot.position.set(1.8, 0.8, -2);
+scene.add(knot);
+
+// Smaller ring
+const ringGeom = new THREE.TorusGeometry(0.6, 0.06, 64, 64);
+const ringMat = new THREE.MeshPhysicalMaterial({
+  color: 0xff4080, roughness: 0.2, metalness: 0.3,
+  emissive: 0x400820, emissiveIntensity: 0.4
+});
+const ring = new THREE.Mesh(ringGeom, ringMat);
+ring.position.set(-2, -1, -1);
+scene.add(ring);
+
+// Animate
+function animate(t) {
+  requestAnimationFrame(animate);
+  const s = t * 0.0005;
+  knot.rotation.x = s * 0.6;
+  knot.rotation.y = s * 0.8;
+  ring.rotation.x = s * 1.2;
+  ring.rotation.y = s * 0.9;
+  particles.rotation.y = s * 0.1;
+  particles.rotation.x = s * 0.05;
+  renderer.render(scene, camera);
+}
+requestAnimationFrame(animate);
+
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+
+// ─── App Card ──────────────────────
+(function () {
+  var el = document.getElementById('content');
+  function esc(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+  function show(data) {
+    if (!data || !data.link) {
+      el.innerHTML = '<a class="btn" href="#">COMING SOON</a>';
+      return;
+    }
+    var icon = data.image
+      ? '<img class="app-icon" src="' + esc(data.image) + '" alt="">'
+      : '<div class="app-icon-fb">🎮</div>';
+    el.innerHTML =
+      '<div class="app-card">' + icon +
+        '<div class="app-info">' +
+          '<div class="app-title">' + esc(data.title || 'Gorilla Tag') + '</div>' +
+          (data.desc ? '<div class="app-desc">' + esc(data.desc) + '</div>' : '') +
+        '</div>' +
+      '</div>' +
+      '<a class="btn" href="' + esc(data.link) + '" target="_blank" rel="noopener">' +
+        'GET ON APPLAB' +
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>' +
+      '</a>';
+
+    // Fallback if image fails (oculuscdn 403 etc)
+    var img = el.querySelector('.app-icon');
+    if (img) {
+      img.addEventListener('error', function () {
+        var fb = document.createElement('div');
+        fb.className = 'app-icon-fb';
+        fb.textContent = '🎮';
+        img.replaceWith(fb);
+      });
+    }
+  }
+
+  fetch('/api/applab')
+    .then(function (r) { return r.json(); })
+    .then(show)
+    .catch(function () { el.innerHTML = '<a class="btn" href="#">COMING SOON</a>'; });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+{
+  "Results": [
+    {
+      "key": "ActivationReferenceDate",
+      "data": "5/29/2026 5:00:00 PM"
+    },
+    {
+      "key": "AllActiveQuests",
+      "data": "{\"DailyQuests\":[{\"selectCount\":1,\"name\":\"Gameplay\",\"quests\":[{\"disable\":false,\"questID\":11,\"weight\":1,\"category\":\"NONE\",\"questName\":\"PLAY INFECTION\",\"questType\":\"gameModeRound\",\"questOccurenceFilter\":\"INFECTION\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"forest\",\"canyon\",\"beach\",\"mountain\",\"skyJungle\",\"cave\",\"Metropolis\",\"rotating\",\"none\"]},{\"disable\":false,\"questID\":19,\"weight\":1,\"category\":\"NONE\",\"questName\":\"PLAY PAINTBRAWL\",\"questType\":\"gameModeRound\",\"questOccurenceFilter\":\"PAINTBRAWL\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"forest\",\"canyon\",\"beach\",\"mountain\",\"skyJungle\",\"cave\",\"Metropolis\",\"rotating\",\"none\"]},{\"disable\":true,\"questID\":13,\"weight\":1,\"category\":\"NONE\",\"questName\":\"PLAY FREEZE TAG\",\"questType\":\"gameModeRound\",\"questOccurenceFilter\":\"FREEZE TAG\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"forest\",\"canyon\",\"beach\",\"mountain\",\"skyJungle\",\"cave\",\"Metropolis\",\"rotating\",\"none\"]},{\"disable\":false,\"questID\":1,\"weight\":1,\"category\":\"NONE\",\"questName\":\"PLAY GUARDIAN\",\"questType\":\"gameModeRound\",\"questOccurenceFilter\":\"GUARDIAN\",\"requiredOccurenceCount\":5,\"requiredZones\":[\"forest\",\"canyon\",\"beach\",\"mountain\",\"cave\",\"Metropolis\",\"none\"]},{\"disable\":false,\"questID\":4,\"weight\":1,\"category\":\"NONE\",\"questName\":\"TAG PLAYERS\",\"questType\":\"misc\",\"questOccurenceFilter\":\"GameModeTag\",\"requiredOccurenceCount\":2,\"requiredZones\":[\"none\"]}]},{\"selectCount\":1,\"name\":\"Ghost Reactor\",\"quests\":[{\"disable\":false,\"questID\":35,\"weight\":1,\"category\":\"NONE\",\"questName\":\"COLLECT GHOST CORES AS A CREW\",\"questType\":\"misc\",\"questOccurenceFilter\":\"GRCollectCore\",\"requiredOccurenceCount\":5,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":36,\"weight\":1,\"category\":\"NONE\",\"questName\":\"SMASH BREAKABLES IN GHOST REACTOR\",\"questType\":\"misc\",\"questOccurenceFilter\":\"GRSmashBreakable\",\"requiredOccurenceCount\":5,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":37,\"weight\":1,\"category\":\"NONE\",\"questName\":\"PURGE GHOSTS AS A CREW\",\"questType\":\"misc\",\"questOccurenceFilter\":\"GRKillEnemy\",\"requiredOccurenceCount\":5,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":39,\"weight\":1,\"category\":\"NONE\",\"questName\":\"BREAK A GHOST'S ARMOR\",\"questType\":\"misc\",\"questOccurenceFilter\":\"GRArmorBreak\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":40,\"weight\":1,\"category\":\"NONE\",\"questName\":\"END A SHIFT WITH MORE PURGES THAN INCIDENTS\",\"questType\":\"misc\",\"questOccurenceFilter\":\"GRShiftGoodKD\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"none\"]}]},{\"selectCount\":2,\"name\":\"Exploration\",\"quests\":[{\"disable\":false,\"questID\":5,\"weight\":1,\"category\":\"NONE\",\"questName\":\"RIDE THE SHARK\",\"questType\":\"grabObject\",\"questOccurenceFilter\":\"ReefSharkRing\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":9,\"weight\":1,\"category\":\"NONE\",\"questName\":\"PLAY THE PIANO\",\"questType\":\"tapObject\",\"questOccurenceFilter\":\"Piano_Collapsed_Key\",\"requiredOccurenceCount\":10,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":14,\"weight\":1,\"category\":\"NONE\",\"questName\":\"THROW SNOWBALLS\",\"questType\":\"launchedProjectile\",\"questOccurenceFilter\":\"SnowballProjectile\",\"requiredOccurenceCount\":10,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":15,\"weight\":1,\"category\":\"NONE\",\"questName\":\"GO FOR A SWIM\",\"questType\":\"swimDistance\",\"questOccurenceFilter\":\"\",\"requiredOccurenceCount\":200,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":21,\"weight\":1,\"category\":\"NONE\",\"questName\":\"CLIMB THE TALLEST TREE\",\"questType\":\"enterLocation\",\"questOccurenceFilter\":\"TallestTree\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"forest\"]},{\"disable\":false,\"questID\":22,\"weight\":1,\"category\":\"NONE\",\"questName\":\"COMPLETE THE OBSTACLE COURSE\",\"questType\":\"enterLocation\",\"questOccurenceFilter\":\"ObstacleCourse\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":23,\"weight\":1,\"category\":\"NONE\",\"questName\":\"SWIM UNDER A WATERFALL\",\"questType\":\"enterLocation\",\"questOccurenceFilter\":\"UnderWaterfall\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"none\"]},{\"disable\":true,\"questID\":24,\"weight\":1,\"category\":\"NONE\",\"questName\":\"SNEAK UPSTAIRS IN THE STORE\",\"questType\":\"enterLocation\",\"questOccurenceFilter\":\"SecretStore\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":25,\"weight\":1,\"category\":\"NONE\",\"questName\":\"CLIMB INTO THE CROW'S NEST\",\"questType\":\"enterLocation\",\"questOccurenceFilter\":\"CrowsNest\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":26,\"weight\":1,\"category\":\"NONE\",\"questName\":\"GO FOR A WALK\",\"questType\":\"moveDistance\",\"questOccurenceFilter\":\"\",\"requiredOccurenceCount\":500,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":28,\"weight\":1,\"category\":\"NONE\",\"questName\":\"GET SMALL\",\"questType\":\"misc\",\"questOccurenceFilter\":\"SizeSmall\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"none\"]},{\"disable\":true,\"questID\":29,\"weight\":1,\"category\":\"NONE\",\"questName\":\"GET BIG\",\"questType\":\"misc\",\"questOccurenceFilter\":\"SizeLarge\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"none\"]},{\"disable\":true,\"questID\":31,\"weight\":1,\"category\":\"NONE\",\"questName\":\"ADD A CRITTER TO YOUR COLLECTION\",\"questType\":\"critter\",\"questOccurenceFilter\":\"Collect\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"none\"]},{\"disable\":true,\"questID\":32,\"weight\":1,\"category\":\"NONE\",\"questName\":\"DONATE A CRITTER\",\"questType\":\"critter\",\"questOccurenceFilter\":\"Donate\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"none\"]}]},{\"selectCount\":1,\"name\":\"Social\",\"quests\":[{\"disable\":false,\"questID\":2,\"weight\":1,\"category\":\"NONE\",\"questName\":\"HIGH FIVE PLAYERS\",\"questType\":\"triggerHandEffect\",\"questOccurenceFilter\":\"HIGH_FIVE\",\"requiredOccurenceCount\":10,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":3,\"weight\":1,\"category\":\"NONE\",\"questName\":\"FIST BUMP PLAYERS\",\"questType\":\"triggerHandEffect\",\"questOccurenceFilter\":\"FIST_BUMP\",\"requiredOccurenceCount\":10,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":16,\"weight\":1,\"category\":\"NONE\",\"questName\":\"FIND SOMETHING TO EAT\",\"questType\":\"eatObject\",\"questOccurenceFilter\":\"\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":30,\"weight\":1,\"category\":\"NONE\",\"questName\":\"MAKE A FRIENDSHIP BRACELET\",\"questType\":\"misc\",\"questOccurenceFilter\":\"FriendshipGroupJoined\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"none\"]}]}],\"WeeklyQuests\":[{\"selectCount\":1,\"name\":\"Gameplay\",\"quests\":[{\"disable\":false,\"questID\":17,\"weight\":1,\"category\":\"NONE\",\"questName\":\"PLAY INFECTION\",\"questType\":\"gameModeRound\",\"questOccurenceFilter\":\"INFECTION\",\"requiredOccurenceCount\":5,\"requiredZones\":[\"none\"]},{\"disable\":true,\"questID\":20,\"weight\":1,\"category\":\"NONE\",\"questName\":\"PLAY PAINTBRAWL\",\"questType\":\"gameModeRound\",\"questOccurenceFilter\":\"PAINTBRAWL\",\"requiredOccurenceCount\":5,\"requiredZones\":[\"none\"]},{\"disable\":true,\"questID\":8,\"weight\":1,\"category\":\"NONE\",\"questName\":\"PLAY FREEZE TAG\",\"questType\":\"gameModeRound\",\"questOccurenceFilter\":\"FREEZE TAG\",\"requiredOccurenceCount\":5,\"requiredZones\":[\"none\"]},{\"disable\":true,\"questID\":10,\"weight\":1,\"category\":\"NONE\",\"questName\":\"PLAY GUARDIAN\",\"questType\":\"gameModeRound\",\"questOccurenceFilter\":\"GUARDIAN\",\"requiredOccurenceCount\":25,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":12,\"weight\":1,\"category\":\"NONE\",\"questName\":\"TAG PLAYERS\",\"questType\":\"misc\",\"questOccurenceFilter\":\"GameModeTag\",\"requiredOccurenceCount\":10,\"requiredZones\":[\"none\"]},{\"disable\":true,\"questID\":41,\"weight\":1,\"category\":\"NONE\",\"questName\":\"PURGE GHOSTS AS A CREW\",\"questType\":\"misc\",\"questOccurenceFilter\":\"GRKillEnemy\",\"requiredOccurenceCount\":25,\"requiredZones\":[\"none\"]},{\"disable\":true,\"questID\":42,\"weight\":1,\"category\":\"NONE\",\"questName\":\"SMASH BREAKABLES IN GHOST REACTOR\",\"questType\":\"misc\",\"questOccurenceFilter\":\"GRSmashBreakable\",\"requiredOccurenceCount\":25,\"requiredZones\":[\"none\"]},{\"disable\":true,\"questID\":38,\"weight\":1,\"category\":\"NONE\",\"questName\":\"GET A GORILLACORP PROMOTION\",\"questType\":\"misc\",\"questOccurenceFilter\":\"GRPromoted\",\"requiredOccurenceCount\":1,\"requiredZones\":[\"none\"]}]},{\"selectCount\":1,\"name\":\"Exploration and Social\",\"quests\":[{\"disable\":true,\"questID\":33,\"weight\":1,\"category\":\"NONE\",\"questName\":\"COLLECT CRITTERS\",\"questType\":\"critter\",\"questOccurenceFilter\":\"Collect\",\"requiredOccurenceCount\":5,\"requiredZones\":[\"none\"]},{\"disable\":true,\"questID\":34,\"weight\":1,\"category\":\"NONE\",\"questName\":\"DONATE CRITTERS\",\"questType\":\"critter\",\"questOccurenceFilter\":\"Donate\",\"requiredOccurenceCount\":10,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":6,\"weight\":1,\"category\":\"NONE\",\"questName\":\"THROW SNOWBALLS\",\"questType\":\"launchedProjectile\",\"questOccurenceFilter\":\"SnowballProjectile\",\"requiredOccurenceCount\":50,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":7,\"weight\":1,\"category\":\"NONE\",\"questName\":\"GO FOR A LONG SWIM\",\"questType\":\"swimDistance\",\"questOccurenceFilter\":\"\",\"requiredOccurenceCount\":1000,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":18,\"weight\":1,\"category\":\"NONE\",\"questName\":\"EAT FOOD\",\"questType\":\"eatObject\",\"questOccurenceFilter\":\"\",\"requiredOccurenceCount\":25,\"requiredZones\":[\"none\"]},{\"disable\":false,\"questID\":27,\"weight\":1,\"category\":\"NONE\",\"questName\":\"GO FOR A LONG WALK\",\"questType\":\"moveDistance\",\"questOccurenceFilter\":\"\",\"requiredOccurenceCount\":2500,\"requiredZones\":[\"none\"]}]}]}"
+    },
+    {
+      "key": "AnnouncementData",
+      "data": "{\n    \"ShowAnnouncement\": \"false\",\n    \"AnnouncementID\": \"kID_Prelaunch\",\n    \"AnnouncementTitle\": \"IMPORTANT NEWS\",\n    \"Message\": \"We're working to make Gorilla Tag a better, more age-appropriate experience in our next update. To learn more, please check out our Discord.\"\n  }"
+    },
+    {
+      "key": "ArenaForestSign",
+      "data": "CLOSED - \nNO MONKE BUSINESS\n\n-THE BOARD"
+    },
+    {
+      "key": "ArenaRulesSign",
+      "data": "RULES:\n\n+CAN'T RUN WITH THE BALL\n\n+CAN'T GRAB THE BALL WHEN IT'S THE OTHER TEAM'S COLOR\n\n+BALL COLOR CHANGES FOR A FEW SECONDS WHEN DROPPED\n\n+SCORE BY HOLDING THE BALL IN THE OTHER TEAM'S GOAL\n\n\nRESTARTING THE GAME:\n\nDROP THE BALL INTO THE START SLOT, THEN THE OTHER TEAM MUST PRESS START GAME"
+    },
+    {
+      "key": "ArtifactEvent",
+      "data": "{\"Data\":[{\"TitleDataObjectID\":\"ArtifactEventCityON\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"5/2/2026 5:00:00 PM\",\"EndDateTime\":\"5/2/2026 6:06:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"ArtifactEventCityOFF\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"5/2/2026 6:06:00 PM\",\"EndDateTime\":\"5/3/2026 11:59:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"CityArtifact1\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"5/1/2000 5:00:00 PM\",\"EndDateTime\":\"5/2/2026 6:00:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"CityArtifact2\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"5/2/2026 6:00:00 PM\",\"EndDateTime\":\"5/2/2026 6:06:00 PM\"}],\"RelativeDateTimeWindow\":[]}]}"
+    },
+    {
+      "key": "AsteroidCleanup",
+      "data": "{\"Data\":[{\"TitleDataObjectID\":\"GlassCrackCircleOff\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"01/01/2026 19:00:00\",\"EndDateTime\":\"01/27/2026 19:00:00\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"FarBuildingFireOff\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"01/01/2026 19:00:00\",\"EndDateTime\":\"01/31/2026 19:00:00\"}],\"RelativeDateTimeWindow\":[]}]}"
+    },
+    {
+      "key": "AutoMuteCheckedHours",
+      "data": "{\"hours\": 169}"
+    },
+    {
+      "key": "AutoName_Adverbs",
+      "data": "[\"Cool\",\"Fine\",\"Bald\",\"Bold\",\"Half\",\"Only\",\"Calm\",\"Fab\",\"Ice\",\"Mad\",\"Rad\",\"Big\",\"New\",\"Old\",\"Shy\"]"
+    },
+    {
+      "key": "AutoName_Nouns",
+      "data": "[\"Gorilla\",\"Chicken\",\"Darling\",\"Sloth\",\"King\",\"Queen\",\"Royal\",\"Major\",\"Actor\",\"Agent\",\"Elder\",\"Honey\",\"Nurse\",\"Doctor\",\"Rebel\",\"Shape\",\"Ally\",\"Driver\",\"Deputy\"]"
+    },
+    {
+      "key": "BacktraceSampleRate",
+      "data": "0.001"
+    },
+    {
+      "key": "BuilderTable01",
+      "data": ""
+    },
+    {
+      "key": "BuilderTableConfiguration",
+      "data": "{\"version\":0,\"TableResourceLimits\":[10000,2500,200],\"PlotResourceLimits\":[1500,375,30],\"DroppedPieceLimit\":100,\"updateCountdownDate\":\"3/7/2025 16:00:00\"}"
+    },
+    {
+      "key": "BundleBoardSafeAccountSign",
+      "data": "\"EVERY DAY YOU VISIT GORILLA WORLD YOU WILL GET 100 SHINY ROCKS\""
+    },
+    {
+      "key": "BundleBoardSign_SafeAccount",
+      "data": "\"EVERY DAY YOU VISIT GORILLA WORLD YOU WILL GET 100 SHINY ROCKS\""
+    },
+    {
+      "key": "BundleData",
+      "data": "{\"Items\":[{\"isActive\":false,\"skuName\":\"2026_cardboard_monkenaut_pack\",\"shinyRocks\":2000,\"playFabItemName\":\"LSAEI.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":139,\"displayName\":\"Cardboard Monkenaut Pack\"},{\"isActive\":false,\"skuName\":\"2026_breakdancer_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSAEH.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":139,\"displayName\":\"Breakdancer Pack\"},{\"isActive\":true,\"skuName\":\"2026_gnomish_marauder_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSAEB.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":136,\"displayName\":\"Gnomish Marauder Pack\"},{\"isActive\":false,\"skuName\":\"2026_flydermonke_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSAEA.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":134,\"displayName\":\"Flydermonke Pack\"},{\"isActive\":false,\"skuName\":\"2026_mobots_malice\",\"shinyRocks\":10000,\"playFabItemName\":\"LSADW.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":132,\"displayName\":\"Mobots Malice Pack\"},{\"isActive\":false,\"skuName\":\"2026_balloon_brawler\",\"shinyRocks\":10000,\"playFabItemName\":\"LSADS.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":130,\"displayName\":\"Balloon Brawler Pack\"},{\"isActive\":false,\"skuName\":\"2026_angel_of_chaos_pack\",\"shinyRocks\":0,\"playFabItemName\":\"LSADR.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":129,\"displayName\":\"Angel Of Chaos Pack\"},{\"isActive\":false,\"skuName\":\"2026_winter_warrior_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSADM.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":128,\"displayName\":\"Winter Warrior pack\"},{\"isActive\":false,\"skuName\":\"2025_nutcracker_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSADF.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":126,\"displayName\":\"Nutcracker Pack\"},{\"isActive\":false,\"skuName\":\"2025_jmancurly_uniform\",\"shinyRocks\":0,\"playFabItemName\":\"LSADE.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":124,\"displayName\":\"The jmancurly Uniform\"},{\"isActive\":false,\"skuName\":\"2025_storm_master_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSACY.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":124,\"displayName\":\"Storm Master Pack\"},{\"isActive\":false,\"skuName\":\"2025_shadow_demon_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSACW.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":122,\"displayName\":\"Shadow Demon Pack\"},{\"isActive\":false,\"skuName\":\"2025_mechanical_monke_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSACS.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":120,\"displayName\":\"Mechanical Monke Pack\"},{\"isActive\":false,\"skuName\":\"2025_mossy_mutant_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSACQ.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":118,\"displayName\":\"Mossy Mutant Pack\"},{\"isActive\":false,\"skuName\":\"2025_mystic_monke_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSACK.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":116,\"displayName\":\"Mystic Monke Pack\"},{\"isActive\":false,\"skuName\":\"2025_shiny_fez\",\"shinyRocks\":0,\"playFabItemName\":\"LSACJ.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":115,\"displayName\":\"Shiny Fez\"},{\"isActive\":false,\"skuName\":\"2025_fire_fanatic_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSACH.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":114,\"displayName\":\"Fire Fanatic Pack\"},{\"isActive\":false,\"skuName\":\"2025_cardboard_hero_bundle\",\"shinyRocks\":1000,\"playFabItemName\":\"LSACG.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":114,\"displayName\":\"Cardboard Hero Bundle\"},{\"isActive\":false,\"skuName\":\"2025_toga_party_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSACF.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":111,\"displayName\":\"Toga Party Pack\"},{\"isActive\":false,\"skuName\":\"2025_ghastly_gadgets_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSACE.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":107,\"displayName\":\"Ghastly Gadgets Pack\"},{\"isActive\":false,\"skuName\":\"2025_critter_caretaker_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSACA.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":103,\"displayName\":\"Critter Caretaker Pack\"},{\"isActive\":false,\"skuName\":\"2025_mobots_assemble_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABY.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":101,\"displayName\":\"Mobots Assemble Pack\"},{\"isActive\":false,\"skuName\":\"2025_bear_hug_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABX.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":99,\"displayName\":\"Bear Hug Pack\"},{\"isActive\":false,\"skuName\":\"2025_brass_funke_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABW.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":97,\"displayName\":\"Brass Funke Pack\"},{\"isActive\":false,\"skuName\":\"2024_holiday_blast_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABV.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":95,\"displayName\":\"Holiday Blast Pack\"},{\"isActive\":false,\"skuName\":\"2024_dragon_armor_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABU.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":93,\"displayName\":\"Dragon Armor Pack\"},{\"isActive\":false,\"skuName\":\"2024_headless_nightmare_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABT.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":91,\"displayName\":\"Headless Nightmare Pack\"},{\"isActive\":false,\"skuName\":\"2024_pumpkin_patch_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABS.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":90,\"displayName\":\"Pumpkin Patch Pack\"},{\"isActive\":false,\"skuName\":\"2024_monkes_wild_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABR.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":89,\"displayName\":\"Monkes Wild Pack\"},{\"isActive\":false,\"skuName\":\"CLIMBSTOPPERSBUN\",\"shinyRocks\":10000,\"playFabItemName\":\"CLIMBSTOPPERSBUN\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":0,\"displayName\":\"CLIMB STOPPERS BUNDLE\"},{\"isActive\":false,\"skuName\":\"GLAMROCKERBUNDLE\",\"shinyRocks\":10000,\"playFabItemName\":\"GLAMROCKERBUNDLE\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":0,\"displayName\":\"GLAM ROCKER BUNDLE\"},{\"isActive\":false,\"skuName\":\"2024_cyber_monke_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABP.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":87,\"displayName\":\"Cyber Monke Pack\"},{\"isActive\":false,\"skuName\":\"2024_splash_dash_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABO.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":85,\"displayName\":\"Splash and Dash Pack\"},{\"isActive\":false,\"skuName\":\"2024_shiny_rock_special\",\"shinyRocks\":2200,\"playFabItemName\":\"LSABN.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":83,\"displayName\":\"Shiny Rock Special\"},{\"isActive\":false,\"skuName\":\"2024_climb_stoppers_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABM.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":82},{\"isActive\":false,\"skuName\":\"2024_glam_rocker_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABL.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":80},{\"isActive\":false,\"skuName\":\"2024_monke_monk_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABK.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":78},{\"isActive\":false,\"skuName\":\"2024_leaf_ninja_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABJ.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":76},{\"isActive\":false,\"skuName\":\"2024_gt_monke_plush\",\"shinyRocks\":0,\"playFabItemName\":\"LSABI.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":73},{\"isActive\":false,\"skuName\":\"2024_beekeeper_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABH.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":73},{\"isActive\":false,\"skuName\":\"2024_i_lava_you_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABG.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":71},{\"isActive\":false,\"skuName\":\"2024_mad_scientist_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABF.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":69},{\"isActive\":false,\"skuName\":\"2023_holiday_fir_pack\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABE.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":63},{\"isActive\":false,\"skuName\":\"2023_spider_monke_bundle\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABD.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":59},{\"isActive\":false,\"skuName\":\"2023_caves_bundle\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABC.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":54},{\"isActive\":false,\"skuName\":\"2023_summer_splash_bundle\",\"shinyRocks\":10000,\"playFabItemName\":\"LSABA.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":46},{\"isActive\":false,\"skuName\":\"2023_march_pot_o_gold\",\"shinyRocks\":5000,\"playFabItemName\":\"LSAAU.\",\"majorVersion\":1,\"minorVersion\":1,\"minorVersion2\":39},{\"skuName\":\"2023_sweet_heart_bundle\",\"playFabItemName\":\"LSAAS.\",\"shinyRocks\":0,\"isActive\":false},{\"skuName\":\"2022_launch_bundle\",\"playFabItemName\":\"LSAAP2.\",\"shinyRocks\":10000,\"isActive\":false},{\"skuName\":\"early_access_supporter_pack\",\"playFabItemName\":\"Early Access Supporter Pack\",\"shinyRocks\":0,\"isActive\":false}]}"
+    },
+    {
+      "key": "BundleLargeSafeAccountSign",
+      "data": "\" \""
+    },
+    {
+      "key": "BundleLargeSign_SafeAccount",
+      "data": "\" \""
+    },
+    {
+      "key": "COC",
+      "data": "-NO RACISM, SEXISM, HOMOPHOBIA, TRANSPHOBIA, OR OTHER BIGOTRY\n-NO CHEATS OR MODS\n-DO NOT HARASS OTHER PLAYERS OR INTENTIONALLY MAKE THEM UNCOMFORTABLE\n-DO NOT TROLL OR GRIEF LOBBIES BY BEING UNCATCHABLE OR BY ESCAPING THE MAP. TRY TO MAKE SURE EVERYONE IS HAVING FUN\n-IF SOMEONE IS BREAKING THIS CODE, PLEASE REPORT THEM\n-PLEASE BE NICE GORILLAS AND HAVE A GOOD TIME"
+    },
+    {
+      "key": "COCRanked",
+      "data": "-NO RACISM, SEXISM, HOMOPHOBIA, TRANSPHOBIA, OR OTHER BIGOTRY\n-ABSOLUTELY NO CHEATS OR MODS\n-DO NOT HARASS OTHER PLAYERS OR INTENTIONALLY MAKE THEM UNCOMFORTABLE\n-DO NOT TROLL OR GRIEF LOBBIES BY BEING UNCATCHABLE OR BY ESCAPING THE MAP. TRY TO MAKE SURE EVERYONE IS HAVING FUN\n-IF SOMEONE IS BREAKING THIS CODE, PLEASE REPORT THEM\n-PLEASE BE NICE GORILLAS AND MAY THE BEST MONKE WIN"
+    },
+    {
+      "key": "CavernDig",
+      "data": "{\"Data\":[{\"TitleDataObjectID\":\"CavernDig1\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"4/12/2026 6:00:00 PM\",\"EndDateTime\":\"4/22/2026 6:00:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"CavernDig2\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"4/22/2026 6:00:00 PM\",\"EndDateTime\":\"4/29/2026 6:00:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"CavernDig3\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"4/25/2026 6:00:00 PM\",\"EndDateTime\":\"4/29/2026 6:00:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"CavernDig4\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"4/29/2026 6:00:00 PM\",\"EndDateTime\":\"5/2/3333 6:00:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"CavernDig5\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"5/2/3333 6:00:00 PM\",\"EndDateTime\":\"5/5/3333 6:00:00 PM\"}],\"RelativeDateTimeWindow\":[]}]}"
+    },
+    {
+      "key": "CityEventCountdown",
+      "data": "{\"Data\":[{\"TitleDataObjectID\":\"Countdown\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"3/4/2026 7:00:00 PM\",\"EndDateTime\":\"6/13/2026 9:00:00 AM\"}],\"RelativeDateTimeWindow\":[]}]}"
+    },
+    {
+      "key": "CityEventCountdownTimer",
+      "data": "6/13/2026 9:00:00 AM"
+    },
+    {
+      "key": "CityObjectSchedule",
+      "data": "{\"Data\":[{\"TitleDataObjectID\":\"Clock\",\"AbsoluteDateTimeWindow\":[],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"HowManyMonke\",\"AbsoluteDateTimeWindow\":[],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"GiantTV\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"4/1/2026 12:00:00 AM\",\"EndDateTime\":\"4/5/2026 12:00:00 AM\"}],\"RelativeDateTimeWindow\":[]}]}"
+    },
+    {
+      "key": "ClockHeadings",
+      "data": "GORILLA CORP TIME;YOUR LOCAL TIME"
+    },
+    {
+      "key": "CreatorCoutureATMSign",
+      "data": "support StyledSnail!"
+    },
+    {
+      "key": "CreatorFest",
+      "data": "{\"Data\":[{\"TitleDataObjectID\":\"CreatorEvent\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/13/2026 9:00:00 AM\",\"EndDateTime\":\"6/15/2026 12:00:00 AM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"CreatorObjects\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/13/2026 6:00:00 PM\",\"EndDateTime\":\"6/26/2026 12:00:00 AM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"CreatorObjectsCity\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/13/2026 5:00:00 PM\",\"EndDateTime\":\"6/26/2026 12:00:00 AM\"}],\"RelativeDateTimeWindow\":[]}]}"
+    },
+    {
+      "key": "CreatorHutATMCode",
+      "data": "snailio$d9u9yddiHDm18DQtyvO9R"
+    },
+    {
+      "key": "CreatorStore_Thanks",
+      "data": "thank you to all my supporters"
+    },
+    {
+      "key": "CreditsData",
+      "data": "[{\"Title\":\"DEV TEAM\",\"Entries\":[\"Aaron Carr\",\"Aaron Hooper\",\"Adam Riggs\",\"Albert Ivanov\",\"Alyssa Vessey\",\"Anirudh Sundaresan\",\"Anton Franzluebbers\",\"Aubrey Isaacman\",\"Aven Presseisen\",\"Cameron Oltmann\",\"Carlo Grossi Jr\",\"Carlos Sanchez\",\"Chris Hands\",\"Christine Diana Williamson\",\"Claire E Aran\",\"Cody O'Quinn\",\"Craig Abell\",\"Dan Negovan\",\"Daniel Barrow\",\"Daniel Mooney\",\"Daniel Smith\",\"Daniel Taylor\",\"Darren Schoen\",\"David Dowie\",\"David Neubelt\",\"David Yee\",\"Derek \\\"DunkTrain\\\" Arabian\",\"Doug Wilcox\",\"Drew Fulsom\",\"Duncan \\\"rev2600\\\" Carroll\",\"Elie Arabian\",\"Eric “8on2” Kearns\",\"Genevieve Laurendeau\",\"Hannah Wetterau\",\"Haunted Army\",\"Heather Tierney\",\"Hunter Mabrey\",\"Jah Raphael\",\"James Rammelkamp\",\"Jamie Pierce\",\"Jay \\\"ojsauce\\\"\",\"Jason Hayes\",\"Jaxon Strembitsky\",\"Jayden \\\"v3nish\\\" K\",\"Jenn Cummings\",\"Jennifer Lane\",\"Jennifer Rabbitt\",\"Jesse Hernandez\",\"Jessica Sweeney\",\"Jim \\\"ColdT\\\" Conrad\",\"John Joy\",\"John Daud\",\"John Sleeper\",\"John Wilson\",\"Johnathon Harter\",\"Johnny Wing\",\"Jonathan \\\"Jonny D\\\" Dearborn\",\"Jonathan \\\"JHameltime\\\" Hamel\",\"Jordan \\\"CircuitLord\\\" J.\",\"Jorge Gonzalez\",\"Josh Spigener\",\"Joshua Flores\",\"Joshua Hughes\",\"Justin DeVore\",\"Justin Thomas\",\"BiffBish\",\"Kerestell Smith\",\"Keith \\\"ElectronicWall\\\" Taylor\",\"Kyle Bean\",\"Laurence \\\"Yixlid\\\" Cheers\",\"Lee Rosenberg\",\"Long Diep\",\"Maria Garza\",\"Mark Putong\",\"Mathieu Grivel\",\"Matt \\\"Crimity\\\" Ostgard\",\"Maxen McCoy\",\"Michael Austin\",\"Michael K Lee\",\"Michael Lewis Herrod\",\"Michael Wetherill\",\"Mike Crassweller\",\"Mike T\",\"Mitchel Hanson-Clayton\",\"Morgan Hoke\",\"Natalie Smulevich\",\"Niara-Maysa Chambers\",\"Nick Taylor\",\"Patrick Moynihan\",\"Pete Tummillo\",\"Rachel \\\"Sakura\\\" Hart\",\"Richard \\\"RJTheShade\\\" M\",\"Riley O'Callaghan\",\"Ronn Harbin\",\"Ross Furmidge\",\"Ryan Ruzich\",\"Sam Tuggle\",\"Steve Nix\",\"Steven Dunn\",\"Symba Sealy\",\"Terry \\\"SirDimwi\\\" Cassidy\",\"Theo Keeler\",\"Tom Quitoni\",\"Tyler George\",\"Tyler \\\"RoxTytan\\\" Rossi\",\"Vida Abdollahi\",\"Vong Pha\",\"Yoon Joon So\",\"Zac Mroz\"]},{\"Title\":\"SPECIAL THANKS\",\"Entries\":[\"Alpha Squad\",\"Calum Haigh\",\"Caroline Arabian\",\"Clarissa & Declan\",\"Cullen Heubner\",\"EZ ICE\",\"Gwen\",\"GT-Security\",\"Kamil Bazydlo\",\"Laura \\\"Poppy\\\" Lorian\",\"Lilly Tothill\",\"Meta\",\"Mighty PR\",\"Sasha \\\"Kayze\\\" Sanders\",\"Scout House\",\"The \\\"Sticks\\\"\"]},{\"Title\":\"MUSIC BY\",\"Entries\":[\"Stunshine\",\"David Anderson Kirk\",\"Jaguar Jen\",\"Audiopfeil\",\"Owlobe\"]}]"
+    },
+    {
+      "key": "CustomMapCosmeticData",
+      "data": "{\"customMapItemSlot\":0,\"bustType\":7,\"playFabID\":\"LMAJC.\"}|{\"customMapItemSlot\":1,\"bustType\":6,\"playFabID\":\"LMAMM.\"}|{\"customMapItemSlot\":2,\"bustType\":1,\"playFabID\":\"LFAHD.\"}|{\"customMapItemSlot\":3,\"bustType\":7,\"playFabID\":\"LEAAE.\"}|{\"customMapItemSlot\":4,\"bustType\":6,\"playFabID\":\"LMAJY.\"}|{\"customMapItemSlot\":5,\"bustType\":1,\"playFabID\":\"LHAGE.\"}|{\"customMapItemSlot\":6,\"bustType\":2,\"playFabID\":\"LBAGM.\"}|{\"customMapItemSlot\":7,\"bustType\":7,\"playFabID\":\"LMABX.\"}|{\"customMapItemSlot\":8,\"bustType\":7,\"playFabID\":\"LMABV.\"}|{\"customMapItemSlot\":9,\"bustType\":4,\"playFabID\":\"LHACX.\"}|{\"customMapItemSlot\":10,\"bustType\":1,\"playFabID\":\"LHACR.\"}|{\"customMapItemSlot\":11,\"bustType\":4,\"playFabID\":\"LBACG.\"}"
+    },
+    {
+      "key": "DeployFeatureFlags",
+      "data": "{\"flags\":[{\"name\":\"2024-06-CosmeticsAuthenticationV2\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2025-04-CosmeticsAuthenticationV2-SetData\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2025-04-CosmeticsAuthenticationV2-ReadData\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2025-04-CosmeticsAuthenticationV2-Compat\",\"value\":0,\"valueType\":\"percent\"},{\"name\":\"2025-04-KIDOptIn\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2025-04-KIDRequired\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2025-07-UseMothershipIdAsGgwpId\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2025-07-ReportReportEventsToGgwp\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2025-07-ReportMuteEventsToGgwp\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2025-07-ValidateNamesWithGgwp\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2025-09-PlayFabAnalyticsSampleRate\",\"value\":0,\"valueType\":\"percent\"},{\"name\":\"2025-09-MothershipAnalyticsSampleRate\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2025-10-FriendCodes\",\"value\":0,\"valueType\":\"percent\"},{\"name\":\"2025-10-TelemetryZoneEventSampling\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2025-10-PlayfabBansEnabled\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2025-10-MothershipBansEnabled\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2026-04-VStumpGrabbablesFix\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2026-04-SuppressZonesInVStump\",\"value\":100,\"valueType\":\"percent\"},{\"name\":\"2026-05-RoomControlsEnabled\",\"value\":100,\"valueType\":\"percent\"}]}"
+    },
+    {
+      "key": "DrillTime",
+      "data": "6/13/2026 9:00:00 AM\n"
+    },
+    {
+      "key": "EnableCustomAuthentication",
+      "data": "true"
+    },
+    {
+      "key": "EnableLckCosmetics",
+      "data": "true"
+    },
+    {
+      "key": "EnableTempCosmeticUnlocks",
+      "data": "true"
+    },
+    {
+      "key": "EventWarnings",
+      "data": "{\"Data\":[{\"TitleDataObjectID\":\"5min\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/13/2026 8:54:30 AM\",\"EndDateTime\":\"6/13/2026 8:55:20 AM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"4min\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/13/2026 8:55:30 AM\",\"EndDateTime\":\"6/13/2026 8:56:20 AM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"3min\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/13/2026 8:56:30 AM\",\"EndDateTime\":\"6/13/2026 8:57:20 AM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"2min\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/13/2026 8:57:30 AM\",\"EndDateTime\":\"6/13/2026 8:58:20 AM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"1min\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/13/2026 8:58:30 AM\",\"EndDateTime\":\"6/13/2026 8:59:20 AM\"}],\"RelativeDateTimeWindow\":[]}]}"
+    },
+    {
+      "key": "GConVidDrops",
+      "data": "{\"Data\":[{\"TitleDataObjectID\":\"GConVidDrop01\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/12/2026 12:00:00 AM\",\"EndDateTime\":\"6/28/2026 12:00:00 AM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"GConVidDrop02\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/12/2026 12:00:00 AM\",\"EndDateTime\":\"6/28/2026 12:00:00 AM\"}],\"RelativeDateTimeWindow\":[]}]}"
+    },
+    {
+      "key": "GoTime",
+      "data": "6/02/2026 21:30:00 PM"
+    },
+    {
+      "key": "GorillanalyticsChance",
+      "data": "4320"
+    },
+    {
+      "key": "Hatchery",
+      "data": "{\"Data\":[{\"TitleDataObjectID\":\"EventStart\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/13/2026 8:44:00 AM\",\"EndDateTime\":\"6/13/2026 8:50:00 AM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"TransportSequencer\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/13/2026 8:45:00 AM\",\"EndDateTime\":\"6/13/2026 8:55:00 AM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"EventEnd\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/13/2026 8:50:00 AM\",\"EndDateTime\":\"6/13/2036 8:50:00 AM\"}],\"RelativeDateTimeWindow\":[]}]}"
+    },
+    {
+      "key": "HowManyMonkeCheck",
+      "data": "30"
+    },
+    {
+      "key": "July4",
+      "data": "{\"Data\":[{\"TitleDataObjectID\":\"July4Objects\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/12/2026 12:000 AM\",\"EndDateTime\":\"7/3/2026 12:000 AM\"}],\"RelativeDateTimeWindow\":[]}]}"
+    },
+    {
+      "key": "KIDData",
+      "data": "{\"KIDEnabled\":\"true\",\"KIDPhase\":5,\"KIDNewPlayerIsoTimestamp\":\"2025-07-01T00:00:00Z\",\"KIDOptInRewards\":[{\"Phases\":[2,3],\"ItemId\":\"KIDOPTINBUNDLE\"},{\"Phases\":[4],\"ItemId\":\"KIDREQUIREDBUNDLE\",\"ReturningPlayersOnly\":true}],\"KIDMinPlayerAgeByPlatform\":{\"Meta\":0,\"Steam\":0,\"Sony\":7}}"
+    },
+    {
+      "key": "LatestPrivacyPolicyVersion",
+      "data": "2026.03.11"
+    },
+    {
+      "key": "LatestTOSVersion",
+      "data": "2026.03.11"
+    },
+    {
+      "key": "MOTD",
+      "data": "G'day Gorillas from Western Australia! 🇦🇺\n\n<color=ff0000>Another Rizz: AA Baton</color>\n<color=11806a>Admin: Admin Badge plus below</color>\n<color=0252af>Moderator: Stick plus below</color>\n<color=c402ff>Forest Guide/Helper: Lava Stick plus below</color>\n\n\nPlease join the discord!\nhttps://discord.gg/vG2XPdfza7\n- Snake (The Owner)"
+    },
+    {
+      "key": "MOTDRanked",
+      "data": "ONE OF THE MOST REQUESTED FEATURES IS NOW LIVE. RANKED MODE MADE FOR COMPETITIVE-MINDED PLAYERS!\n\nLAUNCHING WITH DAYTIME FOREST MAP ONLY, NO DECORATIONS!\n-NO SIGNUPS OR SPREADSHEETS NEEDED - JUST JUMP IN.\n-MATCHMAKING IS BASED ON SKILL.\n-PLAY TIMED INFECTION ROUNDS, AND CLIMB THE LADDER.\n-GAMES START WITH FOUR OR MORE.\n\nRANKS INCLUDE WOOD, ROCK, BRONZE, SILVER, GOLD, AND BEYOND. HOW HIGH CAN YOU CLIMB?"
+    },
+    {
+      "key": "MOTDVIMExp1",
+      "data": "WE LAVA V.I.M <3\nTHROW ROCKS INTO THE VOLCANO TO START - LAVA WILL BEGIN TO RISE\n\nAVOID THE LAVA OR YOU WILL BE TAGGED -THE LAVA RISES UNTIL EVERYONE IS TAGGED\n\nTHEN THE VOLCANO RESETS\nTHE FLOOR LITERALLY IS LAVA!"
+    },
+    {
+      "key": "Monkus",
+      "data": "{\"Data\":[{\"TitleDataObjectID\":\"MonkusBasement_Normal\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"01/01/2000 19:00\",\"EndDateTime\":\"03/27/2026 19:00\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"MonkusBasement_Trashed\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"03/27/2026 19:00\",\"EndDateTime\":\"01/01/3333 19:00\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"Monkus_Mountain2\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"03/24/2026 19:00\",\"EndDateTime\":\"01/01/3333 19:00\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"Monkus_Canyon1\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"03/27/2026 19:00\",\"EndDateTime\":\"01/01/3333 19:00\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"Monkus_Canyon2\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"03/30/2026 19:00\",\"EndDateTime\":\"01/01/3333 19:00\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"Monkus_Canyon3\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"04/01/2026 19:00\",\"EndDateTime\":\"01/01/3333 19:00\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"Monkus_Growl\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"01/01/2000 19:00\",\"EndDateTime\":\"04/04/2026 19:00\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"Monkus_RopesNormal\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"01/01/2000 19:00\",\"EndDateTime\":\"03/27/2026 19:00\"}],\"RelativeDateTimeWindow\":[]}]}"
+    },
+    {
+      "key": "MovingDrill",
+      "data": "{\"Data\":[{\"TitleDataObjectID\":\"MovingDrill1\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"3/7/2026 7:00:00 PM\",\"EndDateTime\":\"3/11/2026 7:00:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"MovingDrill2\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"3/11/2026 7:00:00 PM\",\"EndDateTime\":\"3/14/2026 7:00:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"MovingDrill3\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"3/14/2026 7:00:00 PM\",\"EndDateTime\":\"3/18/2026 7:00:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"MovingDrill4\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"3/18/2026 7:00:00 PM\",\"EndDateTime\":\"3/21/2026 7:00:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"MovingDrill5\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"3/21/2026 7:00:00 PM\",\"EndDateTime\":\"3/25/2026 7:00:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"MovingDrill6\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"3/25/2026 7:00:00 PM\",\"EndDateTime\":\"4/4/2026 2:00:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"MovingDrill7\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"4/5/2026 2:00:00 PM\",\"EndDateTime\":\"4/11/2026 6:05:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"ScaffoldBase_Normal\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"3/25/1999 7:00:00 PM\",\"EndDateTime\":\"3/28/2026 7:00:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"ScaffoldBase_Cutout\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"3/28/2026 7:00:00 PM\",\"EndDateTime\":\"4/4/3333 7:30:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"DoorsCaution_Closed\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"3/28/2026 7:00:00 PM\",\"EndDateTime\":\"4/4/2026 6:10:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"DoorsCaution_Open\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"4/4/2026 6:00:00 PM\",\"EndDateTime\":\"4/4/3333 6:00:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"DrillCrane\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"3/28/2026 7:00:00 PM\",\"EndDateTime\":\"4/4/3333 7:30:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"DrillScaffold1\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"4/1/2026 7:00:00 PM\",\"EndDateTime\":\"4/3/2026 7:00:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"DrillScaffold2\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"4/3/2026 6:00:00 PM\",\"EndDateTime\":\"4/4/3333 6:30:00 PM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"DrillEventCity\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"4/11/2026 5:00:00 PM\",\"EndDateTime\":\"4/12/2026 11:59:00 PM\"}],\"RelativeDateTimeWindow\":[]}]}"
+    },
+    {
+      "key": "PUNErrorLogging",
+      "data": "0"
+    },
+    {
+      "key": "Pride",
+      "data": "{\"Data\":[{\"TitleDataObjectID\":\"PrideObjects\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"06/01/2026 00:00\",\"EndDateTime\":\"06/08/2026 00:00\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"NormalObjects\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"05/01/2026 00:00\",\"EndDateTime\":\"06/01/2026 00:00\"},{\"StartDateTime\":\"06/08/2026 00:00\",\"EndDateTime\":\"06/08/3333 00:00\"}],\"RelativeDateTimeWindow\":[]}]}"
+    },
+    {
+      "key": "PrivacyPolicy_2025.06.18",
+      "data": "G'day Gorillas from Western Australia! 🇦🇺\n\n<color=ff0000>Another Rizz: AA Baton</color>\n<color=11806a>Admin: Admin Badge plus below</color>\n<color=0252af>Moderator: Stick plus below</color>\n<color=c402ff>Forest Guide/Helper: Lava Stick plus below</color>\n\n\nPlease join the discord!\nhttps://discord.gg/vG2XPdfza7\n- Snake (The Owner)"
+    },
+    {
+      "key": "PrivacyPolicy_2026.03.11",
+      "data": "G'day Gorillas from Western Australia! 🇦🇺\n\n<color=ff0000>Another Rizz: AA Baton</color>\n<color=11806a>Admin: Admin Badge plus below</color>\n<color=0252af>Moderator: Stick plus below</color>\n<color=c402ff>Forest Guide/Helper: Lava Stick plus below</color>\n\n\nPlease join the discord!\nhttps://discord.gg/vG2XPdfza7\n- Snake (The Owner)"
+    },
+    {
+      "key": "PrivateCrittersGrabSettings",
+      "data": "7"
+    },
+    {
+      "key": "PromoHutSignText",
+      "data": "GorillaCon Merch Drop\nShop on-site & online\nIn-game reward with every purchase!\nMore info at GorillaConTix.com"
+    },
+    {
+      "key": "PropHuntProps",
+      "data": "LMAAZ.\nLHABC.\nLMAAI.\nLHAIA.\nLHABR.\nLMABJ.\nLFACR.\nLMAOY.\nLMAGR.\nLMAAJ.\nLMAHX.\nLFADU.\nLBABC.\nLHADV.\nLFABC.\nLMAAN.\nLHAGJ.\nLHACY.\nLHAEU.\nLHAHM.\nLFACB.\nLFACA.\nLHAAE.\nLMAHY.\nLHABK.\nLHAEK.\nLMANV.\nLMADL.\nLHAIB.\nLMABS.\nLMALF.\nLHAAG.\nLHADL.\nLHACU.\nLHAIG.\nLHAHX.\nLHAGA.\nLFACG.\nLHAAK.\nLFABX.\nLMACS.\nLHAAH.\nLHAJC.\nLMALO.\nLMAAK.\nLMAJU.\nLMALH.\nLHACE.\nLMANB.\nLMAEK.\nLFAFH.\nLMAKK.\nLFAAJ.\nLBABB.\nLHAGY.\nLMAAA.\nLMAFG.\nLHAFG.\nLFAAW.\nLHADW.\nLMAEU.\nLHACS.\nLMADX.\nLMALS.\nLHACJ.\nLMAFI.\nLFAFP.\nLFACK.\nLHAEZ.\nLHABY.\nLMABR.\nLHAFB.\nLMALY.\nLHABD.\nLHAGC.\nLMABH.\nLHADM.\nLHABA.\nLFAFB.\nLHAED.\nLFAFY.\nLHADQ.\nLMAFE.\nLFAEL.\nLFAEA.\nLMADW.\nLMAFA.\nLHACA.\nLHAHV.\nLFAEC.\nLMAKD.\nLFAAO.\nLFAAV.\nLHAAA.\nLMAGZ.\nLHABG.\nLMAOL.\nLHAHQ.\nLMAKF.\nLFAFZ.\nLFAFY.\nLFAHA.\nLHAJG.\nLFAHK.\nLHACX.\nLBAAP.\nLFABE.\nLMABC.\nLMAAW.\nLHAAC."
+    },
+    {
+      "key": "PropHuntProps_BetaJook",
+      "data": "LMAAZ.\nLHABC.\nLMAAI.\nLHAIA.\nLHABR.\nLMABJ.\nLFACR.\nLMAOY.\nLMAGR.\nLMAAJ.\nLMAHX.\nLFADU.\nLBABC.\nLHADV.\nLFABC.\nLMAAN.\nLHAGJ.\nLHACY.\nLHAEU.\nLHAHM.\nLFACB.\nLFACA.\nLHAAE.\nLMAHY.\nLHABK.\nLHAEK.\nLMANV.\nLMADL.\nLHAIB.\nLMABS.\nLMALF.\nLHAAG.\nLHADL.\nLHACU.\nLHAIG.\nLHAHX.\nLHAGA.\nLFACG.\nLHAAK.\nLFABX.\nLMACS.\nLHAAH.\nLHAJC.\nLMALO.\nLMAAK.\nLMAJU.\nLMALH.\nLHACE.\nLMANB.\nLMAEK.\nLFAFH.\nLMAKK.\nLFAAJ.\nLBABB.\nLHAGY.\nLMAAA.\nLMAFG.\nLHAFG.\nLFAAW.\nLHADW.\nLMAEU.\nLHACS.\nLMADX.\nLMALS.\nLHACJ.\nLMAFI.\nLFAFP.\nLFACK.\nLHAEZ.\nLHABY.\nLMABR.\nLHAFB.\nLMALY.\nLHABD.\nLHAGC.\nLMABH.\nLHADM.\nLHABA.\nLFAFB.\nLHAED.\nLFAFY.\nLHADQ.\nLMAFE.\nLFAEL.\nLFAEA.\nLMADW.\nLMAFA.\nLHACA.\nLHAHV.\nLFAEC.\nLMAKD.\nLFAAO.\nLFAAV.\nLHAAA.\nLMAGZ.\nLHABG.\nLMAOL.\nLHAHQ.\nLMAKF.\nLFAFZ.\nLFAFY.\nLFAHA.\nLHAJG.\nLFAHK.\nLHACX.\nLBAAP.\nLFABE.\nLMABC.\nLMAAW.\nLHAAC."
+    },
+    {
+      "key": "PublicCrittersGrabSettings",
+      "data": "1"
+    },
+    {
+      "key": "SeasonalStoreBoardSign",
+      "data": "TURN IT UP TO 11\n\nAND\n\nSHOW OFF YOUR MOVES"
+    },
+    {
+      "key": "SharedBlocksStartingMapConfig",
+      "data": "{\"pageNumber\":0,\"pageSize\":50,\"sortMethod\":\"Top\",\"useMapID\":false,\"mapID\":\"\"}"
+    },
+    {
+      "key": "SharedBlocksTopMapConfig",
+      "data": "{\n    \"rangeMax\": 4,\n    \"sortMethod\": \"Top\",\n    \"useMapID\": false,\n    \"mapID\": \"\"\n  }"
+    },
+    {
+      "key": "SpeakerVoiceToLoudnessConfig",
+      "data": "{\"EnableLoudnessLimit\":true,\"LoudnessLimitThreshold\":2.5}"
+    },
+    {
+      "key": "TOBAlreadyOwnCompTxt",
+      "data": "YOU OWN THE BUNDLE ALREADY! THANK YOU!"
+    },
+    {
+      "key": "TOBAlreadyOwnPurchaseBtnTxt",
+      "data": "-"
+    },
+    {
+      "key": "TOBDefCompTxt",
+      "data": "PLEASE SELECT A PACK TO TRY ON AND BUY"
+    },
+    {
+      "key": "TOBDefPurchaseBtnDefTxt",
+      "data": "PURCHASE ITEMS IN YOUR CART AT THE CHECKOUT COUNTER"
+    },
+    {
+      "key": "TOBSafeCompTxt",
+      "data": "PURCHASE ITEMS IN YOUR CART AT THE CHECKOUT COUNTER"
+    },
+    {
+      "key": "TOS_2025.06.18",
+      "data": "G'day Gorillas from Western Australia! 🇦🇺\n\n<color=ff0000>Another Rizz: AA Baton</color>\n<color=11806a>Admin: Admin Badge plus below</color>\n<color=0252af>Moderator: Stick plus below</color>\n<color=c402ff>Forest Guide/Helper: Lava Stick plus below</color>\n\n\nPlease join the discord!\nhttps://discord.gg/vG2XPdfza7\n- Snake (The Owner)"
+    },
+    {
+      "key": "TOS_2026.03.11",
+      "data": "G'day Gorillas from Western Australia! 🇦🇺\n\n<color=ff0000>Another Rizz: AA Baton</color>\n<color=11806a>Admin: Admin Badge plus below</color>\n<color=0252af>Moderator: Stick plus below</color>\n<color=c402ff>Forest Guide/Helper: Lava Stick plus below</color>\n\n\nPlease join the discord!\nhttps://discord.gg/vG2XPdfza7\n- Snake (The Owner)"
+    },
+    {
+      "key": "TimedStore",
+      "data": "{\"Data\":[{\"TitleDataObjectID\":\"GconPromo\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"5/29/2026 5:00:00 PM\",\"EndDateTime\":\"5/4/2027 9:00:00 AM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"TimedStoreEvent\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/11/2026 6:00:00 PM\",\"EndDateTime\":\"6/15/2026 8:00:00 AM\"}],\"RelativeDateTimeWindow\":[]},{\"TitleDataObjectID\":\"TimedStoreCountdown\",\"AbsoluteDateTimeWindow\":[{\"StartDateTime\":\"6/13/2026 6:00:00 PM\",\"EndDateTime\":\"6/15/2026 8:00:00 AM\"}],\"RelativeDateTimeWindow\":[]}]}"
+    },
+    {
+      "key": "TimedStoreEnds",
+      "data": "5/4/2026 8:00:00 AM"
+    },
+    {
+      "key": "TimedStoreEvent",
+      "data": "6/15/2026 8:00:00 AM"
+    },
+    {
+      "key": "UseLegacyIAP",
+      "data": "FALSE"
+    },
+    {
+      "key": "VIMDLReply1",
+      "data": "Please dont send swear words through the machines or you will recieve a 24 hour ban!\n\n-SNAKE\n\n\n\n\n\n\n\n\n\nWe love to read your messages.  Please keep them coming!"
+    },
+    {
+      "key": "VIMDLReply2",
+      "data": "Please dont send swear words through the machines or you will recieve a 24 hour ban!\n\n-SNAKE\n\n\n\n\n\n\n\n\n\nWe love to read your messages.  Please keep them coming!"
+    },
+    {
+      "key": "VIMExperimentalFeatures",
+      "data": "Experimental (VIM)\n\n- Inside out body tracking\n- Hand tracking\n- Alarm Clocks\n- Floor is Lava\n- More outfit slots\n- More Monke Blocks slots\n- Room Controls\n\n\nReleased (Everyone)\n\n- More friend slots"
+    },
+    {
+      "key": "VIMMessageBoard",
+      "data": "ROOM CONTROLS FOR VIM HOSTS.\n\n- SILENCE MUTES A PLAYER FOR THE ROOM.\n- KICK REMOVES A PLAYER BUT THEY CAN REJOIN.\n- BLOCK PREVENTS REJOINING.\n\nCONTROLS RESET WHEN THE ROOM CLOSES."
+    },
+    {
+      "key": "VIMSpecialThanks",
+      "data": "Shout-outs to some very active VIM Members!\n\nSnakeIsTheBest"
+    },
+    {
+      "key": "VODSchedule",
+      "data": "{\"hourly\":[{\"stream\":{\"name\":\"FNB\",\"hideUpNext\":false,\"id\":\"a5afb6f0-0e1d-4e36-87ca-89c11a6362d9\",\"url\":\"\",\"type\":0,\"duration\":1,\"ch\":0,\"displayTitle\":\"FNB\"},\"minute\":0,\"repeats\":[30],\"startDateTime\":\"1/1/2000 12:00:00 AM\",\"endDateTime\":\"1/1/3000 12:00:00 AM\"},{\"stream\":{\"name\":\"FRANK NEEDS HELP...\",\"hideUpNext\":false,\"id\":\"486f122c-6b2c-4b9b-bc64-45b590ebb599\",\"url\":\"\",\"type\":0,\"duration\":1,\"ch\":0,\"displayTitle\":\"FRANK NEEDS HELP...\"},\"minute\":15,\"repeats\":[45],\"startDateTime\":\"1/1/2000 12:00:00 AM\",\"endDateTime\":\"1/1/3000 12:00:00 AM\"}]}"
+    },
+    {
+      "key": "VODScheduleFeatured",
+      "data": "{\"hourly\":[{\"stream\":{\"name\":\"BEST OF STYLEDSNAIL\",\"hideUpNext\":true,\"id\":\"894a4330-3323-4440-87bc-0ffa08c67f8d\",\"url\":\"\",\"type\":0,\"duration\":1,\"ch\":5,\"displayTitle\":\"\"},\"minute\":0,\"repeats\":[10,20,30,40,50],\"startDateTime\":\"1/1/2000 12:00:00 AM\",\"endDateTime\":\"1/1/3000 12:00:00 AM\"}]}"
+    },
+    {
+      "key": "VStumpDiscord",
+      "data": "\"DISCORD.GG/MONKEMOD\""
+    },
+    {
+      "key": "VStumpFeaturedMaps",
+      "data": "5145025, 5252732, 5837690, 4396531"
+    }
+  ]
+}

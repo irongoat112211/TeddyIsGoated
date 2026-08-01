@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project RS — Q&A</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0c0c0c;--fg:#ffb000;--dim:#8a6000;--border:#2a2a2a;--glow:#ffb00066}
+@font-face{font-family:'Terminal';src:local('Courier New'),local('Lucida Console'),local('Consolas'),local('monospace');font-weight:normal}
+body{background:var(--bg);color:var(--fg);font-family:'Courier New','Lucida Console','Consolas',monospace;font-size:14px;line-height:1.5;min-height:100vh}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,176,0,0.015) 2px,rgba(255,176,0,0.015) 4px);pointer-events:none;z-index:9999}
+.container{max-width:800px;margin:0 auto;padding:32px 20px}
+header{border:1px solid var(--border);padding:20px;margin-bottom:24px;background:var(--bg);box-shadow:inset 0 0 40px rgba(255,176,0,0.03)}
+header h1{font-size:20px;font-weight:normal;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+header h1::before{content:'> ';color:var(--dim)}
+header p{color:var(--dim);font-size:12px}
+.card{border:1px solid var(--border);padding:20px;margin-bottom:16px;background:var(--bg);box-shadow:inset 0 0 30px rgba(255,176,0,0.02)}
+.card h3{font-size:13px;font-weight:normal;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;color:var(--fg)}
+.card h3::before{content:'# ';color:var(--dim)}
+input,textarea{width:100%;background:transparent;padding:10px;border:1px solid var(--border);color:var(--fg);font-family:inherit;font-size:13px;margin-bottom:12px;outline:none;transition:border-color .15s}
+input:focus,textarea:focus{border-color:var(--fg);box-shadow:0 0 10px var(--glow)}
+textarea{resize:vertical;min-height:70px}
+::placeholder{color:var(--dim);opacity:0.5}
+button{background:transparent;color:var(--fg);border:1px solid var(--fg);padding:8px 18px;font-family:inherit;font-size:12px;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .15s}
+button:hover{background:var(--fg);color:var(--bg)}
+button:active{opacity:.7}
+button.sec{border-color:var(--dim);color:var(--dim)}
+button.sec:hover{background:var(--dim);color:var(--bg)}
+button.ter{border-color:var(--dim);color:var(--dim)}
+button.ter:hover{background:var(--dim);color:var(--bg)}
+button:disabled{opacity:.3;cursor:not-allowed}
+.tabs{display:flex;gap:4px;margin-bottom:20px;flex-wrap:wrap}
+.tab{padding:6px 14px;border:1px solid var(--border);background:transparent;color:var(--dim);font-family:inherit;font-size:11px;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:all .15s}
+.tab:hover{border-color:var(--fg);color:var(--fg)}
+.tab.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.q-item{padding:14px 0;border-bottom:1px solid var(--border)}
+.q-item:last-child{border-bottom:none}
+.q-item .q-meta{display:flex;align-items:center;gap:10px;margin-bottom:5px;flex-wrap:wrap}
+.q-item .q-author{font-size:11px;color:var(--dim)}
+.q-item .q-status{font-size:10px;padding:1px 6px;border:1px solid var(--border);text-transform:uppercase;letter-spacing:1px}
+.q-item .q-status.open{border-color:var(--dim);color:var(--dim)}
+.q-item .q-status.answered{border-color:var(--fg);color:var(--fg)}
+.q-item .q-status.closed{border-color:#555;color:#555}
+.q-item .q-text{font-size:14px;margin-bottom:4px;cursor:pointer;transition:color .15s}
+.q-item .q-text:hover{color:#ffcc44}
+.q-item .q-text::before{content:'> ';color:var(--dim)}
+.q-item .q-preview{font-size:12px;color:var(--dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.q-item .q-answers{font-size:11px;color:var(--dim)}
+.answer{border-left:2px solid var(--fg);padding:10px 14px;margin-top:10px;background:rgba(255,176,0,0.03)}
+.answer .a-meta{font-size:11px;color:var(--dim);margin-bottom:4px}
+.answer .a-text{font-size:13px;line-height:1.6}
+.answer .a-text::before{content:'> ';color:var(--dim)}
+.back-link{display:inline-block;color:var(--dim);font-size:12px;cursor:pointer;margin-bottom:16px;transition:color .15s}
+.back-link:hover{color:var(--fg)}
+.back-link::before{content:'<< '}
+.notif{padding:10px 14px;border:1px solid var(--border);font-size:12px;margin-bottom:12px;display:none}
+.notif.ok{display:block;border-color:var(--fg);color:var(--fg)}
+.notif.err{display:block;border-color:#ff4444;color:#ff4444}
+.loading{text-align:center;padding:30px;color:var(--dim);font-size:12px}
+.loading .spinner{display:inline-block;width:12px;height:12px;border:1px solid var(--dim);border-top-color:var(--fg);border-radius:50%;animation:spin .8s linear infinite;margin-right:8px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:600px){.container{padding:20px 12px}header h1{font-size:16px}}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="container">
+    <header>
+      <h1>Project RS Q&amp;A</h1>
+      <p>Browse questions and answers from the team</p>
+    </header>
+    <div id="notif" class="notif"></div>
+    <div id="tabs-row" class="tabs">
+      <button class="tab on" data-tab="browse">Browse</button>
+      <button class="tab" data-tab="search">Search</button>
+    </div>
+    <div id="tab-browse">
+      <div id="filter-row" class="tabs" style="margin-bottom:14px">
+        <button class="tab on" data-filter="all">All</button>
+        <button class="tab" data-filter="answered">Answered</button>
+        <button class="tab" data-filter="open">Open</button>
+      </div>
+      <div id="q-list"><div class="loading"><span class="spinner"></span>Loading questions...</div></div>
+      <div id="q-pagination" class="tabs" style="justify-content:center;margin-top:16px;display:none"></div>
+    </div>
+    <div id="tab-search" style="display:none">
+      <div class="card">
+        <h3>Search Questions</h3>
+        <input id="search-q" placeholder="Search for a question...">
+        <button id="search-btn" class="sec">Search</button>
+      </div>
+      <div id="search-results"></div>
+    </div>
+    <div id="tab-detail" style="display:none">
+      <div id="back-link" class="back-link">Back to questions</div>
+      <div id="q-detail"></div>
+    </div>
+  </div>
+</div>
+<script>
+let state = { page: 1, filter: 'all', total: 0, questions: [] };
+
+function showTab(name) {
+  document.querySelectorAll('#tabs-row .tab').forEach(t => t.classList.toggle('on', t.dataset.tab === name));
+  document.querySelectorAll('[id^="tab-"]').forEach(el => el.style.display = el.id === 'tab-' + name ? '' : 'none');
+  if (name === 'browse') loadQuestions();
+}
+
+function setFilter(f) {
+  state.filter = f; state.page = 1;
+  document.querySelectorAll('#filter-row .tab').forEach(t => t.classList.toggle('on', t.dataset.filter === f));
+  loadQuestions();
+}
+
+async function api(path, opts) {
+  try {
+    const r = await fetch(path, { headers: { 'Content-Type': 'application/json' }, ...opts });
+    if (!r.ok) { const d = await r.json().catch(() => ({})); throw new Error(d.error || r.status); }
+    return r.json();
+  } catch (e) { showNotif(e.message, 'err'); throw e; }
+}
+
+function showNotif(msg, type) {
+  const el = document.getElementById('notif');
+  el.textContent = msg; el.className = 'notif ' + type;
+  setTimeout(() => { el.className = 'notif'; }, 5000);
+}
+
+async function loadQuestions() {
+  const el = document.getElementById('q-list');
+  el.innerHTML = '<div class="loading"><span class="spinner"></span>Loading questions...</div>';
+  try {
+    const params = '?page=' + state.page + '&limit=20' + (state.filter !== 'all' ? '&status=' + state.filter : '');
+    const d = await api('/api/qa/questions' + params);
+    state.questions = d.questions || [];
+    state.total = d.total || 0;
+    renderQuestions(state.questions);
+    renderPagination(d);
+  } catch (e) { el.innerHTML = '<div class="card">Failed to load questions.</div>'; }
+}
+
+function renderQuestions(questions) {
+  const el = document.getElementById('q-list');
+  if (!questions.length) { el.innerHTML = '<div class="card" style="text-align:center;color:var(--dim)">No questions yet.</div>'; return; }
+  el.innerHTML = '<div class="card" style="padding:0 20px">' + questions.map(q => {
+    const statusClass = q.status === 'answered' ? 'answered' : q.status === 'closed' ? 'closed' : 'open';
+    const statusLabel = q.status === 'answered' ? 'Answered' : q.status === 'closed' ? 'Closed' : 'Pending';
+    const latest = q.latest_answer ? q.latest_answer.slice(0, 120) + (q.latest_answer.length > 120 ? '...' : '') : '';
+    return '<div class="q-item"><div class="q-meta"><span class="q-author">' + esc(q.author_name) + '</span><span class="q-status ' + statusClass + '">' + statusLabel + '</span><span class="q-answers">' + q.answer_count + (q.answer_count === 1 ? ' answer' : ' answers') + '</span></div><div class="q-text" data-qid="' + q.id + '">' + esc(q.question_text) + '</div>' + (latest ? '<div class="q-preview">' + esc(latest) + '</div>' : '') + '<div class="q-meta" style="margin-top:4px"><span class="q-author">' + (q.createdat || '').slice(0, 10) + '</span></div></div>';
+  }).join('') + '</div>';
+}
+
+function renderPagination(d) {
+  const el = document.getElementById('q-pagination');
+  const totalPages = Math.max(1, Math.ceil((d.total || 0) / (d.limit || 20)));
+  if (totalPages <= 1) { el.style.display = 'none'; return; }
+  el.style.display = 'flex';
+  let html = '';
+  if (state.page > 1) html += '<button class="tab" data-page="' + (state.page - 1) + '">&laquo; Prev</button>';
+  html += '<span style="font-size:11px;color:var(--dim);padding:8px 12px">Page ' + state.page + ' of ' + totalPages + '</span>';
+  if (state.page < totalPages) html += '<button class="tab" data-page="' + (state.page + 1) + '">Next &raquo;</button>';
+  el.innerHTML = html;
+}
+
+function goPage(p) { state.page = p; loadQuestions(); window.scrollTo(0, 0); }
+
+async function viewQuestion(id) {
+  try {
+    const d = await api('/api/qa/questions/' + id);
+    document.querySelectorAll('[id^="tab-"]').forEach(el => el.style.display = 'none');
+    document.getElementById('tab-detail').style.display = '';
+    const q = d.question;
+    const answers = d.answers || [];
+    const statusClass = q.status === 'answered' ? 'answered' : q.status === 'closed' ? 'closed' : 'open';
+    const statusLabel = q.status === 'answered' ? 'Answered' : q.status === 'closed' ? 'Closed' : 'Pending';
+    let html = '<div class="card"><h3>Question</h3><div class="q-meta"><span class="q-author">' + esc(q.author_name) + '</span><span class="q-status ' + statusClass + '">' + statusLabel + '</span></div><div style="font-size:14px;line-height:1.7;margin-top:8px">' + esc(q.question_text) + '</div><div class="q-meta" style="margin-top:8px"><span class="q-author">' + (q.createdat || '').slice(0, 10) + '</span></div></div>';
+    if (answers.length) {
+      html += '<div class="card"><h3>Answers (' + answers.length + ')</h3>' + answers.map(a => '<div class="answer"><div class="a-meta">' + esc(a.answered_by) + ' &middot; ' + (a.createdat || '').slice(0, 10) + '</div><div class="a-text">' + esc(a.answer_text) + '</div></div>').join('') + '</div>';
+    } else {
+      html += '<div class="card" style="text-align:center;color:var(--dim)">No answers yet. Check back later!</div>';
+    }
+    document.getElementById('q-detail').innerHTML = html;
+  } catch (e) {}
+}
+
+function backToList() {
+  document.getElementById('tab-detail').style.display = 'none';
+  document.getElementById('tab-browse').style.display = '';
+  loadQuestions();
+}
+
+async function doSearch() {
+  const q = document.getElementById('search-q').value.trim();
+  if (!q) return;
+  const el = document.getElementById('search-results');
+  try {
+    const d = await api('/api/qa/search?q=' + encodeURIComponent(q));
+    if (!d.results || !d.results.length) { el.innerHTML = '<div class="card" style="text-align:center;color:var(--dim)">No results found.</div>'; return; }
+    renderQuestions(d.results);
+  } catch (e) {}
+}
+
+function esc(s) { if (!s) return ''; const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+document.getElementById('tabs-row').addEventListener('click', e => {
+  const btn = e.target.closest('.tab');
+  if (!btn || !btn.dataset.tab) return;
+  showTab(btn.dataset.tab);
+});
+
+document.getElementById('filter-row').addEventListener('click', e => {
+  const btn = e.target.closest('.tab');
+  if (!btn || !btn.dataset.filter) return;
+  setFilter(btn.dataset.filter);
+});
+
+document.getElementById('q-list').addEventListener('click', e => {
+  const el = e.target.closest('.q-text');
+  if (!el || !el.dataset.qid) return;
+  viewQuestion(parseInt(el.dataset.qid));
+});
+
+document.getElementById('q-pagination').addEventListener('click', e => {
+  const btn = e.target.closest('.tab');
+  if (!btn || !btn.dataset.page) return;
+  goPage(parseInt(btn.dataset.page));
+});
+
+document.getElementById('search-btn').addEventListener('click', doSearch);
+document.getElementById('search-q').addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
+
+document.getElementById('back-link').addEventListener('click', backToList);
+
+loadQuestions();
+</script>
+</body>
+</html>

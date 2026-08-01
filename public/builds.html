@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Viewer — Project RS</title>
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/" } }
+</script>
+<style>
+:root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #c9d1d9; --accent: #58a6ff; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); height:100vh; display:flex; overflow:hidden; }
+#sidebar { width:320px; min-width:320px; background:var(--card); border-right:1px solid var(--border); display:flex; flex-direction:column; }
+#sidebar h1 { color:var(--accent); padding:16px; font-size:18px; border-bottom:1px solid var(--border); }
+#mapList { flex:1; overflow-y:auto; padding:0; }
+.map-item { padding:12px 16px; cursor:pointer; border-bottom:1px solid var(--border); transition:background 0.15s; }
+.map-item:hover { background:rgba(88,166,255,0.06); }
+.map-item.active { background:rgba(88,166,255,0.12); border-left:3px solid var(--accent); }
+.map-item h3 { font-size:14px; margin-bottom:2px; }
+.map-item span { font-size:12px; color:#8b949e; }
+#viewer { flex:1; position:relative; overflow:hidden; }
+canvas { display:block; position:absolute; top:0; left:0; }
+#empty { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#484f58; font-size:18px; pointer-events:none; }
+.loading { padding:20px; text-align:center; color:#8b949e; }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <h1>Published Builds</h1>
+  <div id="mapList"><div class="loading">Loading...</div></div>
+</div>
+
+<div id="viewer">
+  <div id="empty">Select a build to view</div>
+  <div id="info"></div>
+</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ─── 3D Scene Setup ─────────────────
+const viewer = document.getElementById('viewer');
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0a0a14);
+scene.fog = new THREE.Fog(0x0a0a14, 20, 120);
+
+const camera = new THREE.PerspectiveCamera(55, 1, 0.5, 200);
+camera.position.set(15, 18, 20);
+camera.lookAt(0, 0, 0);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+viewer.appendChild(renderer.domElement);
+
+// Lights
+scene.add(new THREE.AmbientLight(0x404060, 0.8));
+const sun = new THREE.DirectionalLight(0xfff0e0, 2.5);
+sun.position.set(30, 50, 20);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+sun.shadow.camera.near = 0.5; sun.shadow.camera.far = 150;
+sun.shadow.camera.left = -40; sun.shadow.camera.right = 40;
+sun.shadow.camera.top = 40; sun.shadow.camera.bottom = -40;
+scene.add(sun);
+scene.add(new THREE.HemisphereLight(0x606080, 0x202030, 0.5));
+
+// Grid floor
+const grid = new THREE.GridHelper(40, 40, 0x505070, 0x252540);
+scene.add(grid);
+
+// Controls
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.target.set(0, 0, 0);
+controls.maxPolarAngle = Math.PI / 2 + 0.3;
+
+// Build pieces group
+let piecesGroup = new THREE.Group();
+scene.add(piecesGroup);
+
+// ─── Resize ────────────────────────
+function resize() {
+  renderer.setSize(viewer.clientWidth, viewer.clientHeight);
+  camera.aspect = viewer.clientWidth / Math.max(viewer.clientHeight, 1);
+  camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', resize);
+resize();
+
+// ─── Animation loop ────────────────
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
+animate();
+
+// ─── Piece name lookup ─────────────
+const PIECE_NAMES = {
+  // Plat pieces
+  1104189119:'Plat_1x1_Bottom_Closed',2126552251:'Plat_1x1_Bottom_Extention_Front',
+  "-995621815":'Plat_1x1_Bottom_Open',1436484283:'Plat_1x1_Botton_Extension_Back',
+  "-1253866589":'Plat_1x1_Top_Closed',120635329:'Plat_1x1_Top_Open',
+  "-344676138":'Plat_2_SolidBase',591235889:'Plat_2_SolidTop',
+  "-1355136053":'Plat_Base',513643486:'Plat_Base_Piece1',"-1907218274":'Plat_Base_Piece2',
+  "-1595795005":'Plat_Beam',1070429453:'Plat_Beam1',1953188373:'Plat_Beam2',
+  "-705044944":'Plat_Beam3',1634159767:'Plat_OpenBase',"-2104338083":'Plat_OpenTop',
+  2120742569:'Plat_SolidBase',66243491:'Plat_SolidTop',1615677412:'Builder_ArmShelfCube',
+  // BuilderFactory
+  788427133:'BuilderFactory_AccentLight',52293335:'BuilderFactory_CeilingPipes',
+  "-995726668":'BuilderFactory_DoorwayThreshold',"-613071486":'BuilderFactory_ElevatorCutout',
+  "-2079378555":'BuilderFactory_FloorCollision',1748023064:'BuilderFactory_FloorTile',
+  "-1220283409":'BuilderFactory_Metals',1633231496:'BuilderFactory_MeterHousings',
+  "-1683086288":'BuilderFactory_MeterHousings_Glass',1960430451:'BuilderFactory_Mezzanine',
+  "-750729770":'BuilderFactory_Mezzanine_Glass',"-1851117282":'BuilderFactory_MiniKiosk',
+  1084384538:'BuilderFactory_MiniKiosk_Birthday',"-35978425":'BuilderFactory_PipeEnd',
+  2060528788:'BuilderFactory_ScanKiosk',"-1906018463":'BuilderFactory_SmallModelDetails',
+  845347379:'BuilderFactory_Stool',2010403686:'BuilderRecycler_PipeMeter',
+  "-806323898":'BuilderRecycler_Stool_Noober',"-888862663":'BuilderRecycler_Stool',
+  291655553:'BuilderStuccoWall',1830977709:'BuilderStuccoWallPurple',
+};
+function pieceName(hash) { return PIECE_NAMES[hash] || ('UNKNOWN_'+hash); }
+
+// ─── Color palette ─────────────────
+function hashColor(n) {
+  var h = ((n * 2654435761) >>> 0) % 360;
+  return new THREE.Color().setHSL(h / 360, 0.6, 0.55);
+}
+
+// ─── Decompress ────────────────────
+async function decompress(data) {
+  try {
+    if (data.startsWith('{')) return JSON.parse(data);
+    var raw = atob(data);
+    var bytes = new Uint8Array(raw.length);
+    for (var i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
+    if (bytes[0] === 0x1f && bytes[1] === 0x8b) {
+      var ds = new DecompressionStream('gzip');
+      var readable = new ReadableStream({ start(c) { c.enqueue(bytes); c.close(); } });
+      var chunks = [];
+      var total = 0;
+      await readable.pipeThrough(ds).pipeTo(new WritableStream({
+        write(c) { chunks.push(c); total += c.length; }
+      }));
+      var all = new Uint8Array(total);
+      var off = 0;
+      for (var c of chunks) { all.set(c, off); off += c.length; }
+      return JSON.parse(new TextDecoder().decode(all));
+    }
+    return JSON.parse(new TextDecoder().decode(bytes));
+  } catch (e) { return null; }
+}
+
+// ─── 3D Render ─────────────────────
+function renderBuild(json) {
+  // Clear existing
+  while (piecesGroup.children.length > 0) {
+    var child = piecesGroup.children[0];
+    if (child.geometry) child.geometry.dispose();
+    if (child.material) {
+      if (Array.isArray(child.material)) child.material.forEach(m => m.dispose());
+      else child.material.dispose();
+    }
+    piecesGroup.remove(child);
+  }
+
+  if (!json || !json.numPieces) return;
+
+  var children = {};
+  var total = Math.min(json.numPieces, (json.pieceId || []).length);
+  for (var i = 0; i < total; i++) {
+    var pid = json.pieceId[i];
+    var parent = json.parentId[i];
+    var twist = (json.placement[i] >> 16) & 3;
+    var xOff = (json.placement[i] & 0xFF) - 128;
+    var zOff = ((json.placement[i] >> 8) & 0xFF) - 128;
+    var rx = xOff, rz = zOff;
+    if (twist === 1) { rx = zOff; rz = -xOff; }
+    else if (twist === 2) { rx = -xOff; rz = -zOff; }
+    else if (twist === 3) { rx = -zOff; rz = xOff; }
+    var p = { id: pid, type: json.pieceType[i], parent: parent, x: rx, z: rz, y: (json.timeOffset ? json.timeOffset[i] : 0) / 1000 || 0, twist: twist };
+    if (!children[parent]) children[parent] = [];
+    children[parent].push(p);
+  }
+
+  // Seed built-in parents with origin so their children can compute positions
+  var worldPos = {};
+  var queue = [];
+  // Roots: parentId=-1 or built-in IDs (5-9999)
+  (children[-1] || []).forEach(function(p) { worldPos[p.id] = { x: 0, y: 0, z: 0 }; queue.push(p); });
+  // Also seed built-in parents that have children
+  for (var pid in children) {
+    var p = parseInt(pid);
+    if (p >= 5 && p < 10000) {
+      worldPos[p] = { x: 0, y: 0, z: 0 };
+      (children[p] || []).forEach(function(c) { queue.push(c); });
+    }
+  }
+
+  var visited = new Set();
+  Object.keys(worldPos).forEach(function(k) { visited.add(parseInt(k)); });
+
+  while (queue.length > 0) {
+    var p = queue.shift();
+    if (!worldPos[p.parent]) continue;
+    var parentPos = worldPos[p.parent];
+    var wp = { x: parentPos.x + p.x, y: parentPos.y + p.y, z: parentPos.z + p.z };
+    worldPos[p.id] = wp;
+    (children[p.id] || []).forEach(function(child) { queue.push(child); });
+  }
+
+  // Build meshes
+  var typeColors = {};
+  var boxGeom = new THREE.BoxGeometry(0.7, 0.35, 0.7);
+  var coneGeom = new THREE.ConeGeometry(0.25, 0.4, 4);
+  var edgeMat = new THREE.MeshBasicMaterial({ color: 0x202030, wireframe: true });
+  var lineMat = new THREE.LineBasicMaterial({ color: 0x30363d, transparent: true, opacity: 0.5 });
+
+  // Build meshes
+  var colors = {};
+  var typeCount = {};
+  var geom = new THREE.BoxGeometry(1.2, 0.6, 1.2);
+  var lineMat = new THREE.LineBasicMaterial({ color: 0x505060, transparent: true, opacity: 0.4 });
+
+  for (var i = 0; i < json.numPieces; i++) {
+    var pid = json.pieceId[i];
+    var wp = worldPos[pid];
+    if (!wp) continue;
+
+    var type = json.pieceType[i];
+    typeCount[type] = (typeCount[type] || 0) + 1;
+    var pName = pieceName(type);
+
+    if (!typeColors[type]) typeColors[type] = hashColor(type);
+    var color = typeColors[type];
+
+    var mat = new THREE.MeshStandardMaterial({ color: color, roughness: 0.6, metalness: 0.1 });
+    var mesh = new THREE.Mesh(boxGeom, mat);
+    mesh.position.set(wp.x * 0.1, wp.y * 0.1, wp.z * 0.1);
+    mesh.castShadow = true;
+    mesh.receiveShadow = true;
+    piecesGroup.add(mesh);
+
+    // Connection line to parent
+    var parentWp = worldPos[json.parentId[i]];
+    if (parentWp) {
+      var pts = [
+        new THREE.Vector3(parentWp.x * 0.1, parentWp.y * 0.1 + 0.2, parentWp.z * 0.1),
+        new THREE.Vector3(wp.x * 0.1, wp.y * 0.1 + 0.2, wp.z * 0.1)
+      ];
+      var lineGeom = new THREE.BufferGeometry().setFromPoints(pts);
+      piecesGroup.add(new THREE.Line(lineGeom, lineMat));
+    }
+  }
+
+  // Center camera on build
+  var box = new THREE.Box3().setFromObject(piecesGroup);
+  var center = box.getCenter(new THREE.Vector3());
+  var size = box.getSize(new THREE.Vector3());
+  controls.target.copy(center);
+  camera.position.copy(center.clone().add(new THREE.Vector3(size.x, size.y + size.x * 0.5, size.z * 1.5)));
+  controls.update();
+
+  document.getElementById('info').textContent =
+    'Pieces: ' + json.numPieces + ' · Edits: ' + (json.numEdits||0) + ' · ' +
+    Object.entries(typeCount).map(function(e) { return pieceName(parseInt(e[0])) + ' x' + e[1]; }).join(', ') +
+    ' · Size: ' + size.x.toFixed(1) + ' x ' + size.y.toFixed(1) + ' x ' + size.z.toFixed(1);
+
+  // Ensure canvas fills viewer
+  resize();
+}
+
+// ─── Build list ────────────────────
+async function loadList() {
+  try {
+    var r = await fetch('/api/GetMaps', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({page:0,pageSize:100,sort:'Top',ShowInactive:false})
+    });
+    var maps = await r.json();
+    var el = document.getElementById('mapList');
+    if (!maps.length) { el.innerHTML = '<div class="loading">No builds yet</div>'; return; }
+    el.innerHTML = maps.map(function(m, i) {
+      return '<div class="map-item" data-id="' + m.mapId + '" data-idx="' + i + '">' +
+        '<h3>' + m.mapId + '</h3>' +
+        '<span>' + m.nickname + ' · ' + (m.voteCount||0) + ' votes · ' + m.createdTime + '</span>' +
+      '</div>';
+    }).join('');
+
+    el.querySelectorAll('.map-item').forEach(function(item) {
+      item.addEventListener('click', function() {
+        el.querySelectorAll('.map-item').forEach(function(x) { x.classList.remove('active'); });
+        item.classList.add('active');
+        loadBuild(item.dataset.id);
+      });
+    });
+  } catch(e) { document.getElementById('mapList').innerHTML = '<div class="loading">Failed to load</div>'; }
+}
+
+async function loadBuild(mapId) {
+  document.getElementById('empty').style.display = 'none';
+  // Clear old pieces
+  while (piecesGroup.children.length > 0) {
+    piecesGroup.remove(piecesGroup.children[0]);
+  }
+
+  console.log('[builds] loading', mapId);
+  try {
+    var r = await fetch('/api/GetMapDataDecoded', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({mapId:mapId})
+    });
+    var json = await r.json();
+    if (!json || !json.numPieces) {
+      document.getElementById('info').textContent = 'Empty build or no data';
+      return;
+    }
+    renderBuild(json);
+  } catch(e) {
+    console.error('[builds] error', e);
+    document.getElementById('info').textContent = 'Error: ' + e.message;
+  }
+}
+
+loadList();
+</script>
+</body>
+</html>

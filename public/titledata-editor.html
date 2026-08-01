@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TitleData Editor</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Consolas', 'Monaco', monospace; background: #0d1117; color: #c9d1d9; padding: 20px; }
+h1 { color: #58a6ff; margin-bottom: 10px; font-size: 20px; }
+.toolbar { display: flex; gap: 10px; margin-bottom: 15px; align-items: center; flex-wrap: wrap; }
+input, textarea, button { background: #161b22; border: 1px solid #30363d; color: #c9d1d9; padding: 8px 12px; border-radius: 6px; font-family: inherit; font-size: 13px; }
+button { cursor: pointer; background: #238636; border-color: #2ea043; font-weight: bold; }
+button:hover { background: #2ea043; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button.danger { background: #da3633; border-color: #f85149; }
+button.danger:hover { background: #f85149; }
+#search { width: 300px; }
+.entries { margin-top: 10px; }
+.entry { border: 1px solid #30363d; border-radius: 6px; margin-bottom: 10px; background: #161b22; }
+.entry-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; cursor: pointer; background: #21262d; border-radius: 6px 6px 0 0; }
+.entry-header:hover { background: #30363d; }
+.entry-header .key { color: #79c0ff; font-weight: bold; font-size: 14px; }
+.entry-header .preview { color: #8b949e; font-size: 12px; max-width: 500px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.entry-body { display: none; padding: 14px; }
+.entry.open .entry-body { display: block; }
+.entry.open .entry-header { border-bottom: 1px solid #30363d; border-radius: 6px 6px 0 0; }
+.entry textarea { width: 100%; min-height: 80px; resize: vertical; }
+.status { padding: 8px 14px; border-radius: 6px; margin-bottom: 10px; font-size: 13px; display: none; }
+.status.success { background: #1d4423; color: #3fb950; display: block; }
+.status.error { background: #4b1414; color: #f85149; display: block; }
+.pair { display: flex; gap: 10px; align-items: flex-end; }
+.pair .field { flex: 1; }
+.pair .field label { display: block; font-size: 11px; color: #8b949e; margin-bottom: 4px; }
+.stats { color: #8b949e; font-size: 12px; }
+  .preview-panel { display: none; margin-top: 10px; padding: 14px; background: #1a1a2e; border: 1px solid #30363d; border-radius: 6px; white-space: pre-wrap; word-break: break-word; font-size: 15px; line-height: 1.5; min-height: 30px; max-height: 500px; overflow: auto; }
+  .preview-panel.show { display: block; }
+  .preview-panel b, .preview-panel i, .preview-panel u, .preview-panel s { }
+#app { }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <h1>TitleData Editor</h1>
+  <div id="status"></div>
+  <div class="toolbar">
+    <input type="text" id="search" placeholder="Search keys...">
+    <button id="btnSave">Save All Changes</button>
+    <button id="btnDiscard" class="danger">Discard</button>
+    <span class="stats" id="stats">0 entries | 0 modified</span>
+  </div>
+  <div class="entries" id="entries"></div>
+</div>
+
+<script>
+(function () {
+  var titledata = {};
+  var originalData = {};
+  var dirtyKeys = new Set();
+
+  loadData();
+
+  // ── buttons ──
+  document.getElementById("btnSave").addEventListener("click", saveAll);
+  document.getElementById("btnDiscard").addEventListener("click", function () {
+    if (confirm("Discard unsaved changes?")) loadData();
+  });
+  document.getElementById("search").addEventListener("input", function () { renderList(); });
+
+  // ── event delegation for entries ──
+  document.getElementById("entries").addEventListener("click", function (e) {
+    var hdr = e.target.closest(".entry-header");
+    if (hdr) { hdr.parentElement.classList.toggle("open"); return; }
+    var btn = e.target.closest(".btn-preview");
+    if (btn) {
+      var panel = btn.nextElementSibling;
+      var ta = btn.parentElement.querySelector("textarea");
+      panel.innerHTML = unityToHtml(ta ? ta.value : "");
+      panel.classList.toggle("show");
+      btn.textContent = panel.classList.contains("show") ? "Hide Preview" : "Show Unity Preview";
+      return;
+    }
+  });
+
+  document.getElementById("entries").addEventListener("input", function (e) {
+    var ta = e.target;
+    if (ta.tagName !== "TEXTAREA") return;
+    var entry = ta.closest(".entry");
+    if (!entry) return;
+    var oldKey = entry.id.replace("entry-", "");
+    var val = ta.value;
+    titledata[oldKey] = val;
+    if (originalData[oldKey] === val) dirtyKeys.delete(oldKey);
+    else dirtyKeys.add(oldKey);
+    // update preview
+    var previewEl = entry.querySelector(".preview");
+    if (previewEl) previewEl.textContent = String(val).substring(0, 60);
+    var keyEl = entry.querySelector(".key");
+    if (keyEl) keyEl.textContent = (dirtyKeys.has(oldKey) ? "*" : "") + oldKey;
+    document.getElementById("stats").textContent =
+      Object.keys(titledata).filter(function (k) { return searchMatch(titledata[k], k); }).length +
+      "/" + Object.keys(titledata).length + " entries | " + dirtyKeys.size + " modified";
+  });
+
+  document.getElementById("entries").addEventListener("change", function (e) {
+    var inp = e.target;
+    if (inp.tagName !== "INPUT" || inp.type !== "text") return;
+    var entry = inp.closest(".entry");
+    if (!entry) return;
+    var oldKey = entry.id.replace("entry-", "");
+    var newKey = inp.value;
+    if (!newKey || newKey === oldKey) return;
+    if (titledata[newKey] !== undefined) { alert("Key already exists: " + newKey); inp.value = oldKey; return; }
+    titledata[newKey] = titledata[oldKey];
+    delete titledata[oldKey];
+    if (originalData[oldKey] !== undefined) { originalData[newKey] = originalData[oldKey]; delete originalData[oldKey]; }
+    dirtyKeys.delete(oldKey);
+    dirtyKeys.add(newKey);
+    entry.id = "entry-" + newKey;
+    entry.querySelector(".key").textContent = "*" + newKey;
+    renderList();
+  });
+
+  function searchMatch(val, key) {
+    var s = document.getElementById("search").value.toLowerCase();
+    return key.toLowerCase().includes(s) || String(val).toLowerCase().includes(s);
+  }
+
+  // ── data ──
+  function loadData() {
+    fetch("/api/titledata-editor").then(function (r) { return r.json(); }).then(function (d) {
+      titledata = d;
+      originalData = JSON.parse(JSON.stringify(d));
+      dirtyKeys.clear();
+      renderList();
+    }).catch(function (e) { showStatus("Failed to load: " + e.message, "error"); });
+  }
+
+  function renderList() {
+    var s = document.getElementById("search").value.toLowerCase();
+    var keys = Object.keys(titledata).sort();
+    var filtered = keys.filter(function (k) { return k.toLowerCase().includes(s); });
+    document.getElementById("stats").textContent = filtered.length + "/" + keys.length + " entries | " + dirtyKeys.size + " modified";
+
+    document.getElementById("entries").innerHTML = filtered.map(function (k) {
+      var val = titledata[k];
+      var dirty = dirtyKeys.has(k);
+      var preview = String(val).substring(0, 60);
+      return '<div class="entry" id="entry-' + esc(k) + '">' +
+        '<div class="entry-header"><span class="key">' + (dirty ? "*" : "") + esc(k) + '</span><span class="preview">' + esc(preview) + '</span></div>' +
+        '<div class="entry-body"><div class="pair">' +
+        '<div class="field"><label>Key</label><input type="text" value="' + attr(k) + '"></div>' +
+        '<div class="field"><label>Value</label><textarea>' + esc(val) + '</textarea></div>' +
+        '</div>' +
+        '<button class="btn-preview" style="margin-top:6px;background:#21262d;border-color:#30363d;font-weight:normal">Show Unity Preview</button>' +
+        '<div class="preview-panel"></div>' +
+        '</div></div>';
+    }).join("");
+  }
+
+  function saveAll() {
+    fetch("/api/titledata-editor", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(titledata) })
+      .then(function (r) { if (r.ok) return r.json(); return r.text().then(function (t) { throw new Error(t); }); })
+      .then(function () { originalData = JSON.parse(JSON.stringify(titledata)); dirtyKeys.clear(); showStatus("Saved", "success"); renderList(); })
+      .catch(function (e) { showStatus("Save failed: " + e.message, "error"); });
+  }
+
+  function showStatus(msg, type) {
+    var el = document.getElementById("status");
+    el.textContent = msg;
+    el.className = "status " + type;
+    setTimeout(function () { el.className = "status"; }, 3000);
+  }
+
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function attr(s) { return String(s).replace(/"/g, "&quot;"); }
+
+  function unityToHtml(text) {
+    if (!text) return "";
+    var t = String(text)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/\\n/g, "\n").replace(/<br\s*\/?>/gi, "<br>");
+    // color/colour
+    t = t.replace(/<colo(u?)r=#?([0-9a-fA-F]+)>/g, '<span style="color:#$2">');
+    t = t.replace(/<\/colo(u?)r>/g, "</span>");
+    // size
+    t = t.replace(/<size=(\d+)>/g, function(m,n){return '<span style="font-size:'+n+'%">';});
+    t = t.replace(/<\/size>/g, "</span>");
+    // b, i, u, s, sup, sub
+    t = t.replace(/<b>/g, "<b>").replace(/<\/b>/g, "</b>");
+    t = t.replace(/<i>/g, "<i>").replace(/<\/i>/g, "</i>");
+    t = t.replace(/<u>/g, "<u>").replace(/<\/u>/g, "</u>");
+    t = t.replace(/<s>/g, "<s>").replace(/<\/s>/g, "</s>");
+    t = t.replace(/<sup>/g, "<sup>").replace(/<\/sup>/g, "</sup>");
+    t = t.replace(/<sub>/g, "<sub>").replace(/<\/sub>/g, "</sub>");
+    // mark (highlight)
+    t = t.replace(/<mark=#?([0-9a-fA-F]+)>/g, '<span style="background:#$1">');
+    t = t.replace(/<\/mark>/g, "</span>");
+    // indent
+    t = t.replace(/<indent=(\d+)%>/g, function(m,n){return '<div style="padding-left:'+n+'%">';});
+    t = t.replace(/<\/indent>/g, "</div>");
+    // line height
+    t = t.replace(/<line-height=(\d+)%>/g, function(m,n){return '<span style="line-height:'+n+'%">';});
+    t = t.replace(/<\/line-height>/g, "</span>");
+    // cspace
+    t = t.replace(/<cspace=([^>]+)>/g, function(m,n){return '<span style="letter-spacing:'+n+'">';});
+    t = t.replace(/<\/cspace>/g, "</span>");
+    // newlines
+    t = t.replace(/\n/g, "<br>");
+    return t;
+  }
+})();
+</script>
+</body>
+</html>
